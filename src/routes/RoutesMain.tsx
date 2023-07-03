@@ -17,7 +17,6 @@ export const RoutesMain = () => {
 				<Route path="/" element={<HomePage />} />
 				<Route path="/login" element={<LoginPage />} />
 				<Route path="/register" element={<RegisterPage />} />
-				<Route path="/portfolio" element={<PortfolioPage />} />
 			</Route>
 			<Route element={<PrivatesRoutes />}>
 				<Route path="/dashboard/unpublished" element={<UnpublishedHomePage />} />
@@ -25,6 +24,7 @@ export const RoutesMain = () => {
 				<Route path="/dashboard/profile" element={<ProfilePage />} />
 				<Route path="/dashboard/projects" element={<ProjectsPage />} />
 			</Route>
+				<Route path="/portfolio" element={<PortfolioPage />} />
 		</Routes>
 	);
 };
