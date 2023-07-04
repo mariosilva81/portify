@@ -1,6 +1,12 @@
 import { createContext, useEffect, useState } from "react";
 import { api } from "../../services/api";
-import { IUserContext, IUserProviderProps, IUser, IUserLoginResponse, ILoading } from "./@types";
+import {
+  IUserContext,
+  IUserProviderProps,
+  IUser,
+  IUserLoginResponse,
+  ILoading,
+} from "./@types";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AxiosError } from "axios";
@@ -9,9 +15,9 @@ import { TLoginForm } from "../../pages/LoginPage/components/LoginForm/schema";
 
 export const UserContext = createContext({} as IUserContext);
 
-export const UserProvider = ({children}: IUserProviderProps) => {
+export const UserProvider = ({ children }: IUserProviderProps) => {
   const [user, setUser] = useState<IUser | null>(null);
-  const [loading, setLoading] = useState<ILoading | boolean>(false)
+  const [loading, setLoading] = useState<ILoading | boolean>(false);
 
   const currentPath = window.location.pathname;
 
@@ -35,65 +41,65 @@ export const UserProvider = ({children}: IUserProviderProps) => {
       portfolioId ? navigate("/dashboard/published") : navigate("/dashboard/unpublished");
     } catch (error: AxiosError | any) {
       toast.error("Senha ou e-mail inválidos.");
-            
+
       console.error(error.message);
     } finally {
       setLoading(false);
     }
-  }
-    
+  };
+
   const userRegister = async (formData: TRegisterForm) => {
     try {
       setLoading(true);
 
       await api.post("/users", formData);
 
-      toast.success('Usuário criado com sucesso.');
+      toast.success("Usuário criado com sucesso.");
 
-      navigate('/');
+      navigate("/");
     } catch (error: AxiosError | any) {
       toast.error("E-mail já existente.");
-            
+
       console.error(error.message);
     } finally {
       setLoading(false);
     }
-  }
+  };
 
   const userLogout = () => {
     setUser(null);
-    
+
     localStorage.removeItem("@TOKEN");
     localStorage.removeItem("@USERID");
     localStorage.removeItem("@PORTFOLIOID");
 
-    navigate('/');
-  }
+    navigate("/");
+  };
 
   useEffect(() => {
     const getUser = () => {
-      const token = localStorage.getItem('@TOKEN');
-      const userId = localStorage.getItem('@USERID');
+      const token = localStorage.getItem("@TOKEN");
+      const userId = localStorage.getItem("@USERID");
 
       if (token && userId) {
-        navigate(currentPath)       
-      } 
-    }
-    getUser()
+        navigate(currentPath);
+      }
+    };
+    getUser();
   }, []);
 
   return (
-    <UserContext.Provider value={
-      { 
-        user, 
+    <UserContext.Provider
+      value={{
+        user,
         loading,
         setLoading,
-        userRegister, 
-        userLogin, 
-        userLogout 
-      }
-    }>
+        userRegister,
+        userLogin,
+        userLogout,
+      }}
+    >
       {children}
     </UserContext.Provider>
-  )
-}
+  );
+};
