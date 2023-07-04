@@ -45,7 +45,7 @@ export const ProjectsProvider = ({ children }: IProjectsProviderProps) => {
       const index = projectList.findIndex(
         (project) => project.id === idProject
       );
-      if (index !== 1) {
+      if (index !== -1) {
         const updateProjectList = [...projectList];
         updateProjectList[index] = data;
         setProjectList(updateProjectList);
