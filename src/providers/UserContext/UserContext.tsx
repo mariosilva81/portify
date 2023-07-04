@@ -1,5 +1,4 @@
 import { createContext, useEffect, useState } from "react";
-import { TRegisterForm } from "../../pages/RegisterPage/components/RegisterForm/schema";
 import { api } from "../../services/api";
 import {
   IUserContext,
@@ -11,6 +10,8 @@ import {
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AxiosError } from "axios";
+import { TRegisterForm } from "../../pages/RegisterPage/components/RegisterForm/schema";
+import { TLoginForm } from "../../pages/LoginPage/components/LoginForm/schema";
 
 export const UserContext = createContext({} as IUserContext);
 
@@ -22,14 +23,11 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
 
   const navigate = useNavigate();
 
-  const userLogin = async (formData: any) => {
+  const userLogin = async (formData: TLoginForm) => {
     try {
       setLoading(true);
 
-      const { data } = await api.post<IUserLoginResponse>(
-        "/sessions",
-        formData
-      );
+      const { data } = await api.post<IUserLoginResponse>("/login", formData);
 
       setUser(data.user);
 
@@ -38,9 +36,9 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
 
       toast.success("Usuário logado com sucesso.");
 
-      // PRECISA VERIFICAR PARA QUAL PÁGINA REDIRECIONAR COM BASE NO PERFIL DO USUÁRIO (SE TEM OU NÃO PORTFOLIO PUBLICADO)
-      // navigate("/dashboard/unpublished")
-      // navigate("/dashboard/published")
+      const portfolioId = localStorage.getItem("@PORTFOLIOID");
+
+      portfolioId ? navigate("/dashboard/published") : navigate("/dashboard/unpublished");
     } catch (error: AxiosError | any) {
       toast.error("Senha ou e-mail inválidos.");
 
@@ -73,11 +71,11 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
 
     localStorage.removeItem("@TOKEN");
     localStorage.removeItem("@USERID");
+    localStorage.removeItem("@PORTFOLIOID");
 
     navigate("/");
   };
 
-  //ESSA FUNÇÃO DE AUTOLOGIN PRECISA SER TESTADA DEPOIS
   useEffect(() => {
     const getUser = () => {
       const token = localStorage.getItem("@TOKEN");
