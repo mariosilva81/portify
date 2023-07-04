@@ -17,5 +17,5 @@ export interface IProjectsContext {
   projectList: IProject[];
   createProject: (formData: TModalForm, userID: number) => Promise<void>;
   deleteProject: (projectID: number) => Promise<void>;
-  updateProject: (formData: TModalForm, idProject: number) => Promise<void>;
+  editProject: (formData: TModalForm, idProject: number) => Promise<void>;
 }

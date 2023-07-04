@@ -34,7 +34,7 @@ export const ProjectsProvider = ({ children }: IProjectsProviderProps) => {
     }
   };
 
-  const updateProject = async (formData: TModalForm, idProject: number) => {
+  const editProject = async (formData: TModalForm, idProject: number) => {
     const token = localStorage.getItem("@TOKEN");
     const { img, description, ...formRequest } = formData;
     try {
@@ -45,13 +45,13 @@ export const ProjectsProvider = ({ children }: IProjectsProviderProps) => {
       const index = projectList.findIndex(
         (project) => project.id === idProject
       );
-      if (index !== 1) {
+      if (index !== -1) {
         const updateProjectList = [...projectList];
         updateProjectList[index] = data;
         setProjectList(updateProjectList);
       }
-    } catch (error) {
-      console.log(error);
+    } catch (error: AxiosError | any) {
+      console.error(error.message);
     } finally {
       setLoading(false);
     }
@@ -67,7 +67,7 @@ export const ProjectsProvider = ({ children }: IProjectsProviderProps) => {
       toast.success("Projeto deletado com sucesso.");
       setProjectList(projectList.filter((project) => project.id !== projectID));
     } catch (error: AxiosError | any) {
-      console.log(error);
+      console.error(error);
     } finally {
       setLoading(false);
     }
@@ -78,7 +78,7 @@ export const ProjectsProvider = ({ children }: IProjectsProviderProps) => {
       value={{
         projectList,
         createProject,
-        updateProject,
+        editProject,
         deleteProject,
       }}
     >
