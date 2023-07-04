@@ -13,4 +13,4 @@ export const profileFormSchema = z.object({
     .max(100, 'A descrição deve ter no máximo 100 caracteres.')
 });
 
-export type TLoginForm = z.infer<typeof profileFormSchema>;
+export type TProfileForm = z.infer<typeof profileFormSchema>;
