@@ -24,7 +24,7 @@ export const RegisterForm = () => {
 
   const { userRegister, loading } = useContext(UserContext);
 
-  const submit: SubmitHandler<TRegisterForm> = (formData) => {
+  const submit: SubmitHandler<TBodyForm> = (formData) => {
     const bodyForm = { 
       name: formData.name,
       email: formData.email,
