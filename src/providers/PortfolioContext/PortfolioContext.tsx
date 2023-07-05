@@ -36,10 +36,11 @@ export const PortfolioProvider = ({ children }: IPortfolioProviderProps) => {
       localStorage.setItem("@COLORTHEME", data.color);
 
       toast.success("Portfólio criado com sucesso.");
-      navigate("/dashboard/published");
 
+      navigate("/dashboard/published");
     } catch (error: AxiosError | any) {
       toast.error("Não foi possível criar este portfólio.");
+
       console.error(error.message);
     } finally {
       setLoading(false);
@@ -48,7 +49,7 @@ export const PortfolioProvider = ({ children }: IPortfolioProviderProps) => {
 
   const editPortfolio = async (formData: TProfileForm) => {
     const token = localStorage.getItem("@TOKEN");
-    const portfolioId = localStorage.getItem("@PORTFOLIOID");
+    const portfolioId = localStorage.getItem(JSON.parse("@PORTFOLIOID"));
 
     try {
       const { data } = await 
@@ -56,19 +57,22 @@ export const PortfolioProvider = ({ children }: IPortfolioProviderProps) => {
       { headers: { Authorization: `Bearer ${token}` }});
 
       setPortfolio(data);
-      localStorage.setItem("@COLORTHEME", data.color);
-      toast.success("Portfólio atualizado com sucesso.");
-      navigate("/dashboard/published");
 
+      localStorage.setItem("@COLORTHEME", data.color);
+
+      toast.success("Portfólio atualizado com sucesso.");
+
+      navigate("/dashboard/published");
     } catch (error: AxiosError | any) {
       toast.error("Não foi possível editar este portfólio.");
+
       console.error(error.message);
     }
   };
 
   useEffect(() => {
     const searchPortfolioUser = async () => {
-      const userId = localStorage.getItem("@USERID");
+      const userId = localStorage.getItem(JSON.parse("@USERID"));
 
       if (userId) {
         try {
@@ -80,7 +84,6 @@ export const PortfolioProvider = ({ children }: IPortfolioProviderProps) => {
           } else {
             localStorage.setItem("@PORTFOLIO", JSON.stringify(false));
           }
-
         } catch (error: AxiosError | any) {
           toast.error("Ops! Algo deu errado.")
           console.error(error.message);
