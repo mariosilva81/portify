@@ -21,5 +21,7 @@ export const GlobalStyles = createGlobalStyle`
 
 		--font-weight-1: 400;
 		--font-weight-2: 700;
+
+		--padding-default: 1.25rem 5rem;
   }
 `;

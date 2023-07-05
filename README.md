@@ -1,4 +1,4 @@
-# Aplicação de Cadastro de Portfólio e Projetos
+# Cadastro de Portfólio e Projetos
 
 Esta é uma aplicação em React para que os usuários possam cadastrar e gerenciar seus portfólios e projetos. Através dessa aplicação, os usuários poderão adicionar informações sobre seus projetos, incluindo título, descrição, tecnologias utilizadas, links e imagens.
 
