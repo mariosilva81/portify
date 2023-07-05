@@ -18,7 +18,7 @@ export const HomePage = () => {
       <Header>
         <StyledHeaderButtons>
           <Link to="/register">
-            <Button name="Cadastre-se" widthsize="large1" />
+            <Button name="Cadastre-se" widthsize="large1" color="solid-black" />
           </Link>
           <Link to="/login">
             <Button
