@@ -36,9 +36,9 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
 
       toast.success("Usuário logado com sucesso.");
 
-      const portfolioId = JSON.parse(localStorage.getItem("@PORTFOLIOID")!);
+      const portfolio = localStorage.getItem("@PORTFOLIO");
 
-      portfolioId ? navigate("/dashboard/published") : navigate("/dashboard/unpublished");
+      portfolio ? navigate("/dashboard/published") : navigate("/dashboard/unpublished");
     } catch (error: AxiosError | any) {
       toast.error("Senha ou e-mail inválidos.");
 
@@ -71,7 +71,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
 
     localStorage.removeItem("@TOKEN");
     localStorage.removeItem("@USERID");
-    localStorage.removeItem("@PORTFOLIOID");
+    localStorage.removeItem("@PORTFOLIO");
 
     navigate("/");
   };

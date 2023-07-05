@@ -21,7 +21,6 @@ export const LoginForm = () => {
   const submit: SubmitHandler<TLoginForm> = (formData) => {
     userLogin(formData);
     reset();
-    console.log("Formulário", formData)
   };
 
   return (
