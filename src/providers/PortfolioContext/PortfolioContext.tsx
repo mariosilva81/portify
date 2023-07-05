@@ -90,34 +90,6 @@ export const PortfolioProvider = ({ children }: IPortfolioProviderProps) => {
     searchPortfolioUser();
   }, []);
 
-  useEffect(() => {
-    const searchPortfolioProjects = async () => {
-      const portfolioId = localStorage.getItem("@PORTFOLIOID");
-      
-      if (portfolioId) {
-        try {
-          setLoading(true);
-
-          const { data } = await 
-          api.get(`/portfolios/${portfolioId}/projects/`);
-
-          if (data.length !== 0) {
-            return data;
-          } else {
-            return null;
-          }
-
-        } catch (error: AxiosError | any) {
-          toast.error("Ops! Algo deu errado.");
-          console.error(error.message);
-        } finally {
-          setLoading(false);
-        }
-      }
-    };
-    searchPortfolioProjects();
-  }, []);
-
   return (
     <PortfolioContext.Provider
       value={{
