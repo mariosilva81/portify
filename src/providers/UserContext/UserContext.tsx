@@ -52,7 +52,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     try {
       setLoading(true);
 
-      const { data } = await api.post("/users", formData);
+      await api.post("/users", formData);
       
       toast.success("Usuário criado com sucesso.");
 
