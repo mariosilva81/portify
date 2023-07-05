@@ -7,7 +7,7 @@ import { Input } from "../../../../components/Input";
 import { StyledRegisterForm } from "./styles";
 import { useContext } from "react";
 
-interface TBodyForm = {
+interface TBodyForm {
   name: string;
   email: string;
   password: string;
@@ -24,14 +24,13 @@ export const RegisterForm = () => {
 
   const { userRegister, loading } = useContext(UserContext);
 
-  const submit: SubmitHandler<TBodyForm> = (formData) => {
-    const bodyForm = { 
+  const submit: SubmitHandler<TRegisterForm> = (formData) => {
+    const bodyForm: TBodyForm = {
       name: formData.name,
       email: formData.email,
       password: formData.password
     }
-
-    userRegister(bodyForm);
+    userRegister(bodyForm);   
   };
 
   return (
