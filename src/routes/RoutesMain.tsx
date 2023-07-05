@@ -17,12 +17,12 @@ export const RoutesMain = () => {
 				<Route path="/" element={<HomePage />} />
 				<Route path="/login" element={<LoginPage />} />
 				<Route path="/register" element={<RegisterPage />} />
-			</Route>
-			<Route element={<PrivatesRoutes />}>
 				<Route path="/dashboard/unpublished" element={<UnpublishedHomePage />} />
 				<Route path="/dashboard/published" element={<PublishedHomePage />} />
 				<Route path="/dashboard/profile" element={<ProfilePage />} />
 				<Route path="/dashboard/projects" element={<ProjectsPage />} />
+			</Route>
+			<Route element={<PrivatesRoutes />}>
 			</Route>
 				<Route path="/portfolio" element={<PortfolioPage />} />
 		</Routes>
