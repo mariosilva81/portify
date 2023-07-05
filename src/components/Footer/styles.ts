@@ -9,13 +9,18 @@ export const FooterStyled = styled.footer`
   width: 100%;
   height: 8rem;
 
-  max-width:3000px;
+  padding-left: 15%;
+  padding-right: 15%;
 
+  max-width: 3000px;
+
+  background-color: var(--color-light-gray);
+  
   img {
     width: 5rem;
     height: 1.5rem;
 
-    color:var(--color-black);
+    color: var(--color-black);
   }
 
   p{
@@ -25,13 +30,13 @@ export const FooterStyled = styled.footer`
     text-align: center;
     max-width: 250px;
 
-    color:var(--color-black);
+    color: var(--color-black);
   }
 
   @media(min-width: 620px) {
-    padding:var(--padding-default);
+    /* padding: var(--padding-default); */
 
-    justify-content:space-between;
+    justify-content: space-between;
 
     p {
       max-width: 400px;
