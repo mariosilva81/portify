@@ -10,13 +10,15 @@ import {
   IPortfolioContext,
   IPortfolioProviderProps,
 } from "./@types";
+import { ProjectsContext } from "../ProjectsContext/ProjectsContext";
 
 export const PortfolioContext = createContext({} as IPortfolioContext);
 
 export const PortfolioProvider = ({ children }: IPortfolioProviderProps) => {
-  const [portfolio, setPortfolio] = useState<IPortfolio | null>(null);
-
+  const { setProjectList } = useContext(ProjectsContext);
   const { setLoading } = useContext(UserContext);
+
+  const [portfolio, setPortfolio] = useState<IPortfolio | null>(null);
 
   const navigate = useNavigate();
 
@@ -26,9 +28,11 @@ export const PortfolioProvider = ({ children }: IPortfolioProviderProps) => {
     try {
       setLoading(true);
 
-      const { data } = await api.post("/portfolios",
-      { ...formData, userId: userId },
-      { headers: { Authorization: `Bearer ${token}` }});
+      const { data } = await api.post(
+        "/portfolios",
+        { ...formData, userId: userId },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
 
       setPortfolio(data);
 
@@ -37,7 +41,6 @@ export const PortfolioProvider = ({ children }: IPortfolioProviderProps) => {
 
       toast.success("Portfólio criado com sucesso.");
       navigate("/dashboard/published");
-
     } catch (error: AxiosError | any) {
       toast.error("Não foi possível criar este portfólio.");
       console.error(error.message);
@@ -48,18 +51,17 @@ export const PortfolioProvider = ({ children }: IPortfolioProviderProps) => {
 
   const editPortfolio = async (formData: TProfileForm) => {
     const token = localStorage.getItem("@TOKEN");
-    const portfolioId = localStorage.getItem("@PORTFOLIOID");
+    const portfolioId = JSON.parse(localStorage.getItem("@PORTFOLIOID")!);
 
     try {
-      const { data } = await 
-      api.put(`/portfolios/${portfolioId}`, formData, 
-      { headers: { Authorization: `Bearer ${token}` }});
+      const { data } = await api.put(`/portfolios/${portfolioId}`, formData, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
 
       setPortfolio(data);
       localStorage.setItem("@COLORTHEME", data.color);
       toast.success("Portfólio atualizado com sucesso.");
       navigate("/dashboard/published");
-
     } catch (error: AxiosError | any) {
       toast.error("Não foi possível editar este portfólio.");
       console.error(error.message);
@@ -68,21 +70,21 @@ export const PortfolioProvider = ({ children }: IPortfolioProviderProps) => {
 
   useEffect(() => {
     const searchPortfolioUser = async () => {
-      const userId = localStorage.getItem("@USERID");
+      const userId = JSON.parse(localStorage.getItem("@USERID")!);
 
       if (userId) {
         try {
-          const { data } = await 
-          api.get(`/portfolios?_embed=projects&userId=${userId}`);
+          const { data } = await api.get(
+            `/portfolios?_embed=projects&userId=${userId}`
+          );
 
           if (data.length !== 0) {
             localStorage.setItem("@PORTFOLIO", JSON.stringify(true));
           } else {
             localStorage.setItem("@PORTFOLIO", JSON.stringify(false));
           }
-
         } catch (error: AxiosError | any) {
-          toast.error("Ops! Algo deu errado.")
+          toast.error("Ops! Algo deu errado.");
           console.error(error.message);
         }
       }
@@ -90,31 +92,25 @@ export const PortfolioProvider = ({ children }: IPortfolioProviderProps) => {
     searchPortfolioUser();
   }, []);
 
-  useEffect(() => {
-    const searchPortfolioProjects = async () => {
-      const portfolioId = localStorage.getItem("@PORTFOLIOID");
-      
-      if (portfolioId) {
-        try {
-          setLoading(true);
+  const searchPortfolioProjects = async () => {
+    const portfolioId = localStorage.getItem("@PORTFOLIOID");
 
-          const { data } = await 
-          api.get(`/portfolios/${portfolioId}/projects/`);
+    if (portfolioId) {
+      try {
+        setLoading(true);
 
-          if (data.length !== 0) {
-            return data;
-          } else {
-            return null;
-          }
-
-        } catch (error: AxiosError | any) {
-          toast.error("Ops! Algo deu errado.");
-          console.error(error.message);
-        } finally {
-          setLoading(false);
-        }
+        const { data } = await api.get(`/portfolios/${portfolioId}/projects/`);
+        setProjectList(data);
+      } catch (error: AxiosError | any) {
+        toast.error("Ops! Algo deu errado.");
+        console.error(error.message);
+      } finally {
+        setLoading(false);
       }
-    };
+    }
+  };
+
+  useEffect(() => {
     searchPortfolioProjects();
   }, []);
 
@@ -125,6 +121,7 @@ export const PortfolioProvider = ({ children }: IPortfolioProviderProps) => {
         setPortfolio,
         editPortfolio,
         createPortfolio,
+        searchPortfolioProjects,
       }}
     >
       {children}

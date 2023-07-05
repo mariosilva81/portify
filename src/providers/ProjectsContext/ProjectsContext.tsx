@@ -9,9 +9,9 @@ import { UserContext } from "../UserContext/UserContext";
 export const ProjectsContext = createContext({} as IProjectsContext);
 
 export const ProjectsProvider = ({ children }: IProjectsProviderProps) => {
-  const [projectList, setProjectList] = useState<IProject[]>([]);
-
   const { setLoading } = useContext(UserContext);
+
+  const [projectList, setProjectList] = useState<IProject[]>([]);
 
   const createProject = async (formData: TModalForm, userID: number) => {
     const token = localStorage.getItem("@TOKEN");
@@ -28,7 +28,7 @@ export const ProjectsProvider = ({ children }: IProjectsProviderProps) => {
       setProjectList((projectList) => [...projectList, data]);
       toast.success("Projeto criado com sucesso.");
     } catch (error: AxiosError | any) {
-      console.log(error);
+      console.error(error);
     } finally {
       setLoading(false);
     }
@@ -77,6 +77,7 @@ export const ProjectsProvider = ({ children }: IProjectsProviderProps) => {
     <ProjectsContext.Provider
       value={{
         projectList,
+        setProjectList,
         createProject,
         editProject,
         deleteProject,

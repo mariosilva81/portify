@@ -36,7 +36,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
 
       toast.success("Usuário logado com sucesso.");
 
-      const portfolioId = localStorage.getItem("@PORTFOLIOID");
+      const portfolioId = JSON.parse(localStorage.getItem("@PORTFOLIOID")!);
 
       portfolioId ? navigate("/dashboard/published") : navigate("/dashboard/unpublished");
     } catch (error: AxiosError | any) {
@@ -79,7 +79,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   useEffect(() => {
     const getUser = () => {
       const token = localStorage.getItem("@TOKEN");
-      const userId = localStorage.getItem("@USERID");
+      const userId = JSON.parse(localStorage.getItem("@USERID")!); 
 
       if (token && userId) {
         navigate(currentPath);
