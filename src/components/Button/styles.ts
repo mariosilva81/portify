@@ -1,12 +1,12 @@
 import { styled, css } from "styled-components";
 
-type ColorType =
+export type ColorType =
   | "solid-green"
   | "solid-black"
   | "outline-black"
   | "outline-white";
 
-type widthsizeType = "small" | "small2" | "med" | "med2" | "large1" | "large2";
+export type widthsizeType = "small" | "small2" | "med" | "med2" | "large1" | "large2";
 
 interface IButtonStylesProps {
   color: ColorType;
