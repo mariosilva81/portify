@@ -1,14 +1,16 @@
 import { forwardRef, ButtonHTMLAttributes } from "react";
-import { StyledButton } from "./styles";
+import { ColorType, StyledButton, widthsizeType } from "./styles";
 
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  widthsize: widthsizeType;
+  color: ColorType;
   name: string;
 }
 
 export const Button = forwardRef<HTMLButtonElement, IButtonProps>(
-  ({ name, onClick, type, ...rest }, ref) => {
+  ({ widthsize, color, name, onClick, type, ...rest }, ref) => {
     return (
-      <StyledButton type={type} onClick={onClick} ref={ref} {...rest}>
+      <StyledButton widthsize={widthsize} color={color} type={type} onClick={onClick} ref={ref} {...rest}>
         {name}
       </StyledButton>
     );
