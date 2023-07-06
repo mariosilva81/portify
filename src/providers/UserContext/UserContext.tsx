@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { api } from "../../services/api";
 import {
   IUserContext,
@@ -26,27 +26,25 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   const userLogin = async (formData: TLoginForm) => {
     try {
       setLoading(true);
-
+  
       const { data } = await api.post<IUserLoginResponse>("/login", formData);
-
+  
       setUser(data.user);
-
+  
       localStorage.setItem("@TOKEN", data.accessToken);
       localStorage.setItem("@USERID", JSON.stringify(data.user.id));
-
+  
       toast.success("Usuário logado com sucesso.");
-
-      const portfolio = localStorage.getItem("@PORTFOLIO");
-
-      portfolio ? navigate("/dashboard/published") : navigate("/dashboard/unpublished");
+    
+      navigate("/dashboard");
     } catch (error: AxiosError | any) {
       toast.error("Senha ou e-mail inválidos.");
-
+  
       console.error(error.message);
     } finally {
       setLoading(false);
     }
-  };
+  };  
 
   const userRegister = async (formData: TRegisterForm) => {
     try {

@@ -10,21 +10,34 @@ import {
   StyledNav,
   StyledSectionHome,
 } from "./styles";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { ProjectsPage } from "../ProjectsPage";
 import { ProfilePage } from "../ProfilePage";
 import { UserContext } from "../../../providers/UserContext/UserContext";
+import { PortfolioContext } from '../../../providers/PortfolioContext/PortfolioContext';
 
 type Section = "home" | "profile" | "projects";
 
 export const UnpublishedHomePage: React.FC = () => {
   const [activeSection, setActiveSection] = useState<Section>("home");
+  const [isPortfolio, setIsPortfolio] = useState<boolean>(false);
+
 
   const handleImageClick = (section: Section) => {
     setActiveSection(section);
   };
 
   const { userLogout, user } = useContext(UserContext);
+
+  const { verifyPortfolio } = useContext(PortfolioContext);
+
+  useEffect(() => {
+    const hasPortfolio = async () => {
+      const newIsPortfolio: boolean = await verifyPortfolio();
+      setIsPortfolio(newIsPortfolio);
+    };
+    hasPortfolio();
+  }, []);
 
   return (
     <>

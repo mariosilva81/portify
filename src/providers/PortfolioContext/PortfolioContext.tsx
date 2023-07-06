@@ -68,30 +68,26 @@ export const PortfolioProvider = ({ children }: IPortfolioProviderProps) => {
     }
   };
 
-  useEffect(() => {
-    const searchPortfolioUser = async () => {
-      const userId = JSON.parse(localStorage.getItem("@USERID")!);
+  const verifyPortfolio = async () => {
+    const userId = JSON.parse(localStorage.getItem("@USERID")!);
 
-      if (userId) {
-        try {
-          const { data } = await api.get(
-            `/portfolios?_embed=projects&userId=${userId}`
-          );
+    if (userId) {
+      try {
+        const { data } = await api.get(`/portfolios?userId=${userId}`);
 
-          if (data.length !== 0) {
-            localStorage.setItem("@PORTFOLIO", JSON.stringify(true));
-          } else {
-            localStorage.setItem("@PORTFOLIO", JSON.stringify(false));
-          }
-        } catch (error: AxiosError | any) {
+        if (data.length !== 0) {
+          return true;
+        } else {
+          return false;
+        }
+      } catch (error: AxiosError | any) {
           toast.error("Ops! Algo deu errado.");
           console.error(error.message);
-        }
+          return false;
       }
-    };
-    searchPortfolioUser();
-  }, []);
-
+    }
+  };
+    
   const searchPortfolioProjects = async () => {
     const portfolioId = localStorage.getItem("@PORTFOLIOID");
 
@@ -122,6 +118,7 @@ export const PortfolioProvider = ({ children }: IPortfolioProviderProps) => {
         editPortfolio,
         createPortfolio,
         searchPortfolioProjects,
+        verifyPortfolio,
       }}
     >
       {children}
