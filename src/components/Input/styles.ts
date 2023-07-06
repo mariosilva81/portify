@@ -12,6 +12,8 @@ export const InputStyled = styled.input`
 
   font-family: var(--font-family-secondary);
 
+  outline: none;
+
   ::placeholder {
     font-family: var(--font-family-secondary);
   }
