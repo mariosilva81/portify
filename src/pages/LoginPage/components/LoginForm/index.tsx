@@ -1,10 +1,12 @@
-import { SubmitHandler, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { TLoginForm, loginFormSchema } from "./schema";
-import { useContext } from "react";
 import { UserContext } from "../../../../providers/UserContext/UserContext";
-import { Input } from "../../../../components/Input";
+import { StyledContainerButtons, StyledContainerFields } from "./styles";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { TLoginForm, loginFormSchema } from "./schema";
 import { Button } from "../../../../components/Button";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Input } from "../../../../components/Input";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
 
 export const LoginForm = () => {
   const {
@@ -25,24 +27,33 @@ export const LoginForm = () => {
 
   return (
     <form onSubmit={handleSubmit(submit)}>
-      <Input
-        type="email"
-        placeholder="E-mail"
-        error={errors.email}
-        {...register("email")}
-      />
-      <Input
-        type="password"
-        placeholder="Senha"
-        error={errors.password}
-        {...register("password")}
-      />
-      <Button
-        widthsize="med2"
-        color="solid-green"
-        type="submit"
-        name={loading ? "entrando" : "entrar"}
-      />
+      <StyledContainerFields>
+        <Input type="email" placeholder="E-mail" {...register("email")} />
+        {errors.email && <p>{errors.email.message}</p>}
+
+        <Input type="password" placeholder="Senha" {...register("password")} />
+        {errors.password && <p>{errors.password.message}</p>}
+      </StyledContainerFields>
+
+      <StyledContainerButtons>
+        <Button
+          type="submit"
+          widthsize="small2"
+          color="solid-green"
+          name={loading ? "entrando" : "entrar"}
+        />
+
+        <p>Não possui cadastro?</p>
+
+        <Link to="/register">
+          <Button
+            type="button"
+            widthsize="med2"
+            name="cadastre-se"
+            color="outline-white"
+          />
+        </Link>
+      </StyledContainerButtons>
     </form>
   );
 };

@@ -1,19 +1,26 @@
-import { Link } from "react-router-dom";
+import { LoginForm } from "./components/LoginForm";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
-import { LoginForm } from "./components/LoginForm";
 import { Button } from "../../components/Button";
+import { Link } from "react-router-dom";
+import {
+  StyledContainerHeader,
+  StyledContainerMain,
+  StyledContainerImage,
+  StyledContainerForm,
+} from "./styles";
 
 export const LoginPage = () => {
   return (
     <>
       <Header>
-        <div>
+        <StyledContainerHeader>
           <Link to="/register">
             <Button
               type="button"
               widthsize="med"
               name="cadastre-se"
+              className="hidden"
               color="solid-black"
             />
           </Link>
@@ -25,21 +32,22 @@ export const LoginPage = () => {
               name="acesse seu portfólio"
             />
           </Link>
-        </div>
+        </StyledContainerHeader>
       </Header>
       <main>
-        <div>
-          <img
-            src="src\assets\images\login.png"
-            alt="Homem de óculos segurando e olhando um tablet"
-          />
-          <h1>Login</h1>
-          <p>Acesse o portfólio</p>
-        </div>
-
-        <div>
-          <LoginForm />
-        </div>
+        <StyledContainerMain>
+          <StyledContainerImage>
+            <img
+              src="src\assets\images\login.png"
+              alt="Homem de óculos segurando e olhando um tablet"
+            />
+          </StyledContainerImage>
+          <StyledContainerForm>
+            <h1>Login</h1>
+            <p>Acesse o portfólio</p>
+            <LoginForm />
+          </StyledContainerForm>
+        </StyledContainerMain>
       </main>
       <Footer />
     </>
