@@ -42,7 +42,7 @@ export const HomePage = () => {
           <img src={logo} alt="logotipo da pagina na cor verde" />
           <h1>Crie seu</h1>
           <h1>portfólio online</h1>
-          <p>Crie um portfólio para voce em minutos</p>
+          <p>Crie um portfólio para você em minutos</p>
 
           <StyledHomeButtons>
             <Link to="/register">
@@ -51,7 +51,7 @@ export const HomePage = () => {
             <p>ou</p>
             <Link to="/login">
               <Button
-                name="Acessar Portifolio"
+                name="Acessar Portfólio"
                 color="outline-white"
                 widthsize="large2"
               />
