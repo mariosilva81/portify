@@ -69,7 +69,6 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
 
     localStorage.removeItem("@TOKEN");
     localStorage.removeItem("@USERID");
-    localStorage.removeItem("@PORTFOLIO");
 
     navigate("/");
   };
