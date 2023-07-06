@@ -1,4 +1,4 @@
-import { TProfileForm } from "../../pages/DashboardPage/ProfilePage/components/ProfileForm/schema";
+import { TProfileForm } from "../../pages/DashboardPage/ProfilePage/components/CreateProfileForm/schema";
 import { createContext, useContext, useEffect, useState } from "react";
 import { UserContext } from "../UserContext/UserContext";
 import { useNavigate } from "react-router-dom";

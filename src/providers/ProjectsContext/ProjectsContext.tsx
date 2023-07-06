@@ -3,7 +3,7 @@ import { IProject, IProjectsContext, IProjectsProviderProps } from "./@types";
 import { api } from "../../services/api";
 import { toast } from "react-toastify";
 import { AxiosError } from "axios";
-import { TModalForm } from "../../pages/DashboardPage/ProjectsPage/components/ProjectModal/ModalForm/schema";
+import { TModalForm } from "../../pages/DashboardPage/ProjectsPage/components/ModalForm/schema";
 import { UserContext } from "../UserContext/UserContext";
 
 export const ProjectsContext = createContext({} as IProjectsContext);

@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const profileFormSchema = z.object({
+export const CreateProfileFormSchema = z.object({
   color: z.string()
     .nonempty("O modo de cor é obrigatório."),
   position: z.string()
@@ -13,4 +13,4 @@ export const profileFormSchema = z.object({
     .max(100, 'A descrição deve ter no máximo 100 caracteres.')
 });
 
-export type TProfileForm = z.infer<typeof profileFormSchema>;
+export type TCreateProfileForm = z.infer<typeof CreateProfileFormSchema>;

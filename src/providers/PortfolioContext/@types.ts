@@ -1,4 +1,4 @@
-import { TProfileForm } from "../../pages/DashboardPage/ProfilePage/components/ProfileForm/schema";
+import { TProfileForm } from "../../pages/DashboardPage/ProfilePage/components/CreateProfileForm/schema";
 
 export interface IPortfolioProviderProps {
   children: React.ReactNode;
