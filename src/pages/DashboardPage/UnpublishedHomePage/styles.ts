@@ -36,6 +36,8 @@ export const StyledNav = styled.nav`
   figure {
     display: flex;
     align-items: center;
+
+    cursor: pointer;
     img {
       width: 30px;
       height: 30px;
