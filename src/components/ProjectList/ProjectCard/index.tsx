@@ -1,37 +1,79 @@
 import Edit from "../../../assets/icons/edit.png";
 import Delete from "../../../assets/icons/delete.png";
+import Git from "../../../assets/icons/github.png";
+import Link from "../../../assets/icons/link.png";
 import { useContext, useState } from "react";
 import { ProjectsContext } from "../../../providers/ProjectsContext/ProjectsContext";
-import { StyledProjectCard } from './styles';
+import { ImagesContainer, StyledProjectCard } from "./styles";
 
 export const ProjectCard = () => {
   const [isOpenEdit, setIsOpenEdit] = useState(false);
 
-  const { deleteProject, projectList, setProjectList } =
-    useContext(ProjectsContext);
+  const isDashboardProjects = window.location.pathname.includes(
+    "/dashboard/projects"
+  );
+
+  const { deleteProject, projectList   } = useContext(ProjectsContext);
 
   const handleDelete = (projectID: number) => {
     deleteProject(projectID);
   };
 
+  const redirectLinks = (route: string) => {
+    window.location.replace(route);
+  };
+
   return (
     <>
-      {projectList.map((project) => (
-        <StyledProjectCard key={project.id}>
-          <img
-            src={Edit}
-            alt="Ícone de um lápis na cor verde que simboliza um botão para editar o projeto"
-            onClick={() => {
-              setIsOpenEdit(true);
-            }}
-          />
-          <img
-            src={Delete}
-            alt="Ícone de uma lixeira na cor verde que simboliza um botão para excluir o projeto"
-            onClick={() => handleDelete(project.id)}
-          />
-        </StyledProjectCard>
-      ))}
+      {projectList.map((project) => {
+        if (isDashboardProjects) {
+          return (
+            <StyledProjectCard key={project.id}>
+              <h1>{project.name}</h1>
+              <ImagesContainer>
+                <img
+                  src={Edit}
+                  alt="Ícone de um lápis na cor verde que simboliza um botão para editar o projeto"
+                  onClick={() => {
+                    setIsOpenEdit(true);
+                    handleDelete(project.id);
+                  }}
+                />
+                <img
+                  src={Delete}
+                  alt="Ícone de uma lixeira na cor verde que simboliza um botão para excluir o projeto"
+                  onClick={() => {
+                    handleDelete(project.id);
+                    setIsOpenEdit(true);
+                  }}
+                />
+              </ImagesContainer>
+            </StyledProjectCard>
+          );
+        } else {
+          return (
+            <StyledProjectCard key={project.id}>
+              <h1>{project.name}</h1>
+              <ImagesContainer>
+                <img
+                  src={Git}
+                  alt="Ícone do GitHub na cor verde que simboliza um botão para visualizar o projeto"
+                  onClick={() => {
+                    redirectLinks(project.repository);
+                  }}
+                />
+                <img
+                  src={Link}
+                  alt="Ícone de um link na cor verde que simboliza um botão para acessar o projeto"
+                  onClick={() => {
+                    redirectLinks(project.link);
+                  }}
+                />
+              </ImagesContainer>
+            </StyledProjectCard>
+          );
+        }
+      })}
     </>
   );
 };

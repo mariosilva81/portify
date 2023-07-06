@@ -10,7 +10,14 @@ export const Container = styled.div`
     padding-right: 15%;
 
     margin-top: 1rem;
+    margin-bottom: 2rem;
   }
+`;
+
+export const SectionStyled = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 `;
 
 export const MenuStyled = styled.div`
@@ -34,23 +41,40 @@ export const IconsContainer = styled.div`
   h3 {
     font-size: 1rem;
     font-weight: 700;
+    color: var(--color-black);
+
+    a {
+      display: flex;
+      align-items: center;
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        color: var(--color-primary);
+      }
+    }
   }
 `;
 
 export const TittleAndButtonContainer = styled.div`
   display: flex;
+  flex-direction: column;
+  gap: 1rem;
   justify-content: space-between;
 
   h2 {
-    font-size: 44px;
+    font-size: 2.5rem;
   }
 
-  button{
-    gap:.5rem
-
+  button {
+    gap: 0.5rem;
   }
 
-  img{
+  img {
     width: 30px;
+  }
+
+  @media (min-width: 800px) {
+    flex-direction: row;
   }
 `;

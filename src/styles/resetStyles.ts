@@ -8,8 +8,13 @@ export const ResetStyles = createGlobalStyle`
 		font-family: var(--font-family-primary);
   }
 
+  html{
+  overflow-x: hidden;
+  }
+
   body {
     line-height: 1;
+    overflow-x: hidden;
   }
 
   button {
