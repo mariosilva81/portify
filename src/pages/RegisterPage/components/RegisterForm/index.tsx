@@ -1,10 +1,10 @@
 import { UserContext } from "../../../../providers/UserContext/UserContext";
+import { StyledContainerButton, StyledContainerFields } from "./styles";
 import { TRegisterForm, registerFormSchema } from "./schema";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Button } from "../../../../components/Button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "../../../../components/Input";
-import { StyledRegisterForm } from "./styles";
 import { useContext } from "react";
 
 interface TBodyForm {
@@ -15,6 +15,7 @@ interface TBodyForm {
 
 export const RegisterForm = () => {
   const {
+    reset,
     register,
     handleSubmit,
     formState: { errors },
@@ -28,43 +29,40 @@ export const RegisterForm = () => {
     const bodyForm: TBodyForm = {
       name: formData.name,
       email: formData.email,
-      password: formData.password
-    }
-    userRegister(bodyForm);   
+      password: formData.password,
+    };
+    userRegister(bodyForm);
+    reset();
   };
 
   return (
-    <StyledRegisterForm onSubmit={handleSubmit(submit)}>
-      <Input
-        type="text"
-        placeholder="Nome"
-        error={errors.name}
-        {...register("name")}
-      />
-      <Input
-        type="email"
-        placeholder="E-mail"
-        error={errors.email}
-        {...register("email")}
-      />
-      <Input
-        type="password"
-        placeholder="Senha"
-        error={errors.password}
-        {...register("password")}
-      />
-      <Input
-        type="password"
-        placeholder="Confirme sua senha"
-        error={errors.confirmPassword}
-        {...register("confirmPassword")}
-      />
-      <Button
-        color="solid-green"
-        widthsize="med"
-        type="submit"
-        name={loading ? "cadastrando" : "cadastre-se"}
-      />
-    </StyledRegisterForm>
+    <form onSubmit={handleSubmit(submit)}>
+      <StyledContainerFields>
+        <Input type="text" placeholder="Nome" {...register("name")} />
+        {errors.name && <p>{errors.name.message}</p>}
+
+        <Input type="email" placeholder="E-mail" {...register("email")} />
+        {errors.email && <p>{errors.email.message}</p>}
+
+        <Input type="password" placeholder="Senha" {...register("password")} />
+        {errors.password && <p>{errors.password.message}</p>}
+
+        <Input
+          type="password"
+          placeholder="Confirme sua senha"
+          {...register("confirmPassword")}
+        />
+        {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
+      </StyledContainerFields>
+
+      <StyledContainerButton>
+        <Button
+          type="submit"
+          widthsize="med"
+          color="solid-green"
+          name={loading ? "cadastrando" : "cadastrar-se"}
+        />
+      </StyledContainerButton>
+    </form>
   );
 };
