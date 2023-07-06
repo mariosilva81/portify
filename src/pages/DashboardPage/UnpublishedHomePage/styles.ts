@@ -44,9 +44,8 @@ export const StyledNav = styled.nav`
     }
 
     figcaption {
-      /* font-family: --font-family-primary; */
       font-size: 1.125rem;
-      font-weight: --font-weight-2;
+      font-weight: 700;
       color: #0f1411;
 
       &:hover,

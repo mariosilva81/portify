@@ -10,20 +10,11 @@ import {
   StyledNav,
   StyledSectionHome,
 } from "./styles";
-import { useState, useContext } from "react";
-import { ProjectsPage } from "../ProjectsPage";
-import { ProfilePage } from "../ProfilePage";
+import { useContext } from "react";
 import { UserContext } from "../../../providers/UserContext/UserContext";
-
-type Section = "home" | "profile" | "projects";
+import { Link } from "react-router-dom";
 
 export const UnpublishedHomePage: React.FC = () => {
-  const [activeSection, setActiveSection] = useState<Section>("home");
-
-  const handleImageClick = (section: Section) => {
-    setActiveSection(section);
-  };
-
   const { userLogout, user } = useContext(UserContext);
 
   return (
@@ -45,7 +36,7 @@ export const UnpublishedHomePage: React.FC = () => {
         </h1>
         <p>Selecione uma das opções abaixo</p>
         <StyledNav>
-          <figure onClick={() => handleImageClick("home")}>
+          <figure>
             <img
               src={home}
               alt="ícone com desenho de uma casa, exibe a tela de inicio da dashboard"
@@ -53,52 +44,37 @@ export const UnpublishedHomePage: React.FC = () => {
             <figcaption>Início</figcaption>
           </figure>
 
-          <figure onClick={() => handleImageClick("profile")}>
-            <img
-              src={profile}
-              alt="ícone com desenho de uma pessoa, representando o perfil, ao clicar exibe informações do perfil do usuario logado"
-            />
-            <figcaption>informações de perfil</figcaption>
-          </figure>
+          <Link to="/dashboard/profile">
+            <figure>
+              <img
+                src={profile}
+                alt="ícone com desenho de uma pessoa, representando o perfil, ao clicar exibe informações do perfil do usuario logado"
+              />
+              <figcaption>informações de perfil</figcaption>
+            </figure>
+          </Link>
 
-          <figure onClick={() => handleImageClick("projects")}>
-            <img
-              src={projects}
-              alt="ícone com desenho de varios projetos, ao clicar, exiber os projetos do usuário logado"
-            />
-            <figcaption>meus projetos</figcaption>
-          </figure>
+          <Link to="/dashboard/projects">
+            <figure>
+              <img
+                src={projects}
+                alt="ícone com desenho de varios projetos, ao clicar, exiber os projetos do usuário logado"
+              />
+              <figcaption>meus projetos</figcaption>
+            </figure>
+          </Link>
         </StyledNav>
 
-        {activeSection === "home" ? (
-          <StyledSectionHome>
-            <p>Seu portfólio ainda não está publicado</p>
+        <StyledSectionHome>
+          <p>Seu portfólio ainda não está publicado</p>
+          <Link to="/dashboard/profile">
             <Button
               name="Publicar portfólio"
               color="solid-green"
               widthsize="large1"
-              onClick={() => handleImageClick("profile")}
             />
-          </StyledSectionHome>
-        ) : (
-          ""
-        )}
-
-        {activeSection === "profile" ? (
-          <section>
-            <ProfilePage />
-          </section>
-        ) : (
-          ""
-        )}
-
-        {activeSection === "projects" ? (
-          <section>
-            <ProjectsPage />
-          </section>
-        ) : (
-          ""
-        )}
+          </Link>
+        </StyledSectionHome>
       </StyledMain>
       <Footer />
     </>
