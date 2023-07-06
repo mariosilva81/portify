@@ -1,4 +1,5 @@
-import { TProfileForm } from "../../pages/DashboardPage/ProfilePage/components/CreateProfileForm/schema";
+import { TCreateProfileForm } from "../../pages/DashboardPage/ProfilePage/components/CreateProfileForm/schema";
+import { TEditProfileForm } from "../../pages/DashboardPage/ProfilePage/components/EditProfileForm/schema";
 import { createContext, useContext, useEffect, useState } from "react";
 import { UserContext } from "../UserContext/UserContext";
 import { useNavigate } from "react-router-dom";
@@ -22,7 +23,7 @@ export const PortfolioProvider = ({ children }: IPortfolioProviderProps) => {
 
   const navigate = useNavigate();
 
-  const createPortfolio = async (formData: TProfileForm, userId: number) => {
+  const createPortfolio = async (formData: TCreateProfileForm, userId: number) => {
     const token = localStorage.getItem("@TOKEN");
 
     try {
@@ -49,7 +50,7 @@ export const PortfolioProvider = ({ children }: IPortfolioProviderProps) => {
     }
   };
 
-  const editPortfolio = async (formData: TProfileForm) => {
+  const editPortfolio = async (formData: TEditProfileForm) => {
     const token = localStorage.getItem("@TOKEN");
     const portfolioId = JSON.parse(localStorage.getItem("@PORTFOLIOID")!);
 
