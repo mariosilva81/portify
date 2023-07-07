@@ -37,7 +37,6 @@ export const PortfolioProvider = ({ children }: IPortfolioProviderProps) => {
 
       setPortfolio(data);
 
-      localStorage.setItem("@PORTFOLIOID", data.id);
       localStorage.setItem("@COLORTHEME", data.color);
 
       toast.success("Portfólio criado com sucesso.");
@@ -60,8 +59,11 @@ export const PortfolioProvider = ({ children }: IPortfolioProviderProps) => {
       });
 
       setPortfolio(data);
+
       localStorage.setItem("@COLORTHEME", data.color);
+
       toast.success("Portfólio atualizado com sucesso.");
+      
       navigate("/dashboard");
     } catch (error: AxiosError | any) {
       toast.error("Não foi possível editar este portfólio.");
@@ -77,11 +79,13 @@ export const PortfolioProvider = ({ children }: IPortfolioProviderProps) => {
         const { data } = await api.get(`/portfolios?userId=${userId}`);
   
         if (data.length !== 0) {
+          // if aqui
           return true;
         } else {
           return false;
         }
       } catch (error: AxiosError | any) {
+
         console.error(error.message);
         return false;
       }
@@ -91,7 +95,7 @@ export const PortfolioProvider = ({ children }: IPortfolioProviderProps) => {
   };  
     
   const searchPortfolioProjects = async () => {
-    const portfolioId = localStorage.getItem("@PORTFOLIOID");
+    // const portfolioId = localStorage.getItem("@PORTFOLIOID");
 
     if (portfolioId) {
       try {
