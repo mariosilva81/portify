@@ -69,25 +69,27 @@ export const PortfolioProvider = ({ children }: IPortfolioProviderProps) => {
     }
   };
 
-  const verifyPortfolio = async () => {
+  const verifyPortfolio = async (): Promise<boolean> => {
     const userId = JSON.parse(localStorage.getItem("@USERID")!);
-
+  
     if (userId) {
       try {
         const { data } = await api.get(`/portfolios?userId=${userId}`);
-
+  
         if (data.length !== 0) {
           return true;
         } else {
           return false;
         }
       } catch (error: AxiosError | any) {
-          toast.error("Ops! Algo deu errado.");
-          console.error(error.message);
-          return false;
+        toast.error("Ops! Algo deu errado.");
+        console.error(error.message);
+        return false;
       }
     }
-  };
+  
+    return false;
+  };  
     
   const searchPortfolioProjects = async () => {
     const portfolioId = localStorage.getItem("@PORTFOLIOID");
