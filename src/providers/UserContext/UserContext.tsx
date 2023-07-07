@@ -54,7 +54,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       
       toast.success("Usuário criado com sucesso.");
 
-      navigate("/");
+      navigate("/login");
     } catch (error: AxiosError | any) {
       toast.error("E-mail já existente.");
 
