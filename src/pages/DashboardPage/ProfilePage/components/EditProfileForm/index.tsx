@@ -6,37 +6,35 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { Input } from "../../../../../components/Input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { StyledProfileForm } from "../../styles";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 export const EditProfileForm = () => {
-  const { 
-    portfolio, 
-    editPortfolio, 
-    setPortfolio 
-  } = useContext(PortfolioContext);
-  
+  const { portfolio, editPortfolio } =
+    useContext(PortfolioContext);
+
   const {
     reset,
     register,
     handleSubmit,
-    formState: { errors }
+    formState: { errors },
   } = useForm<TEditProfileForm>({
     resolver: zodResolver(EditProfileFormSchema),
-    defaultValues: {
-      color: portfolio?.color,
-      position: portfolio?.position,
-      description: portfolio?.description
-    }
   });
-  
-  const submit: SubmitHandler<TEditProfileForm> = (formData) => {
-    if (portfolio?.id) {
-      editPortfolio(formData, portfolio?.id);
-      setPortfolio(null);
-      reset();
+
+  useEffect(() => {
+    if (portfolio) {
+      reset({
+        position: portfolio.position,
+        description: portfolio.description,
+        color: portfolio.color,
+      });
     }
+  }, [portfolio, reset]);
+
+  const submit: SubmitHandler<TEditProfileForm> = async (formData) => {
+    editPortfolio(formData);
   };
-  
+
   const { loading } = useContext(UserContext);
 
   return (
@@ -47,11 +45,20 @@ export const EditProfileForm = () => {
         <option value="Escuro">Escuro</option>
       </select>
 
-      <Input label="Cargo" placeholder="Cargo" {...register("position")} />
+      <Input
+        label="Cargo"
+        placeholder="Cargo"
+        {...register("position")}
+        defaultValue={portfolio?.position}
+      />
       {errors.position ? <p>{errors.position.message}</p> : null}
 
       <label>Descrição</label>
-      <textarea placeholder="Descrição" {...register("description")} />
+      <textarea
+        placeholder="Descrição"
+        {...register("description")}
+        defaultValue={portfolio?.description}
+      />
       {errors.description ? <p>{errors.description.message}</p> : null}
 
       <Button

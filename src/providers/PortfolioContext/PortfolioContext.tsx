@@ -1,6 +1,7 @@
 import { TCreateProfileForm } from "../../pages/DashboardPage/ProfilePage/components/CreateProfileForm/schema";
 import { TEditProfileForm } from "../../pages/DashboardPage/ProfilePage/components/EditProfileForm/schema";
 import { createContext, useContext, useEffect, useState } from "react";
+import { ProjectsContext } from "../ProjectsContext/ProjectsContext";
 import { UserContext } from "../UserContext/UserContext";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
@@ -11,7 +12,6 @@ import {
   IPortfolioContext,
   IPortfolioProviderProps,
 } from "./@types";
-import { ProjectsContext } from "../ProjectsContext/ProjectsContext";
 
 export const PortfolioContext = createContext({} as IPortfolioContext);
 
@@ -20,6 +20,7 @@ export const PortfolioProvider = ({ children }: IPortfolioProviderProps) => {
   const { setLoading } = useContext(UserContext);
 
   const [portfolio, setPortfolio] = useState<IPortfolio | null>(null);
+  const [isPortfolioId, setIsPortfolioId] = useState<number | null>(null);
 
   const navigate = useNavigate();
 
@@ -51,16 +52,22 @@ export const PortfolioProvider = ({ children }: IPortfolioProviderProps) => {
 
   const editPortfolio = async (formData: TEditProfileForm) => {
     const token = localStorage.getItem("@TOKEN");
-    const portfolioId = JSON.parse(localStorage.getItem("@PORTFOLIOID")!);
+    const userId = JSON.parse(localStorage.getItem("@USERID")!);
 
     try {
-      const { data } = await api.patch(`/portfolios/${portfolioId}`, formData, {
+      const { data } = await api.get(`/portfolios?userId=${userId}`);
+
+      console.log(data)
+
+      const portfolio = await api.patch(`/portfolios/${data[0].id}`, formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
-      setPortfolio(data);
+      console.log(portfolio);
 
-      localStorage.setItem("@COLORTHEME", data.color);
+      setPortfolio(portfolio.data);
+
+      localStorage.setItem("@COLORTHEME", portfolio.data.color);
 
       toast.success("Portfólio atualizado com sucesso.");
       
@@ -79,7 +86,9 @@ export const PortfolioProvider = ({ children }: IPortfolioProviderProps) => {
         const { data } = await api.get(`/portfolios?userId=${userId}`);
   
         if (data.length !== 0) {
-          // if aqui
+          if (data.id) {
+            setIsPortfolioId(data.id);
+          }
           return true;
         } else {
           return false;
@@ -95,16 +104,16 @@ export const PortfolioProvider = ({ children }: IPortfolioProviderProps) => {
   };  
     
   const searchPortfolioProjects = async () => {
-    // const portfolioId = localStorage.getItem("@PORTFOLIOID");
-
-    if (portfolioId) {
+    if (isPortfolioId) {
       try {
         setLoading(true);
 
-        const { data } = await api.get(`/portfolios/${portfolioId}/projects/`);
+        const { data } = await api.get(`/portfolios/${isPortfolioId}/projects/`);
+        
         setProjectList(data);
       } catch (error: AxiosError | any) {
         toast.error("Ops! Algo deu errado.");
+
         console.error(error.message);
       } finally {
         setLoading(false);
@@ -113,6 +122,7 @@ export const PortfolioProvider = ({ children }: IPortfolioProviderProps) => {
   };
 
   useEffect(() => {
+    verifyPortfolio();
     searchPortfolioProjects();
   }, []);
 
@@ -123,8 +133,8 @@ export const PortfolioProvider = ({ children }: IPortfolioProviderProps) => {
         setPortfolio,
         editPortfolio,
         createPortfolio,
-        searchPortfolioProjects,
         verifyPortfolio,
+        searchPortfolioProjects,
       }}
     >
       {children}
