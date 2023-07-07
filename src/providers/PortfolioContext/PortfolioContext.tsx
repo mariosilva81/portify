@@ -57,13 +57,9 @@ export const PortfolioProvider = ({ children }: IPortfolioProviderProps) => {
     try {
       const { data } = await api.get(`/portfolios?userId=${userId}`);
 
-      console.log(data)
-
       const portfolio = await api.patch(`/portfolios/${data[0].id}`, formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
-
-      console.log(portfolio);
 
       setPortfolio(portfolio.data);
 

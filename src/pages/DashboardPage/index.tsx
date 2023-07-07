@@ -7,6 +7,7 @@ import { StyledHeaderButton, StyledMain, StyledNav } from "./styles";
 import { PortfolioContext } from "../../providers/PortfolioContext/PortfolioContext";
 import { Footer } from "../../components/Footer";
 import { NavBar } from "../../components/NavBar";
+// import { portfolioLink } from '../../routes/RoutesMain';
 
 export const DashboardPage = () => {
   const [isPortfolio, setIsPortfolio] = useState<boolean>(false);
@@ -49,7 +50,7 @@ export const DashboardPage = () => {
         {isPortfolio ? (
           <section>
             <p>Seu portfólio está publicado</p>
-            <h1> Seu portfólio wwwww</h1>
+            {/* <a href={portfolioLink} target="_blank">www.portify.com.br/portfolio/${portfolioLink}</a> */}
           </section>
         ) : (
           <section>
