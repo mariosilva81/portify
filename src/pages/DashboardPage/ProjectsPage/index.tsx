@@ -12,7 +12,8 @@ import {
   IconsContainer,
   MenuStyled,
   TittleAndButtonContainer,
-  SectionStyled
+  SectionStyled,
+  ContentWrapper,
 } from "./styles";
 import { ProjectList } from "../../../components/ProjectList";
 import { ProjectCard } from "../../../components/ProjectList/ProjectCard";
@@ -22,58 +23,70 @@ import { ProjectsContext } from "../../../providers/ProjectsContext/ProjectsCont
 export const ProjectsPage = () => {
   const { user } = useContext(UserContext);
   const { projectList } = useContext(ProjectsContext);
-  
+
+  const handleLogout = () => {
+    window.location.href = "/";
+    localStorage.removeItem("@TOKEN");
+    localStorage.removeItem("@USERID");
+  };
+
   return (
     <Container>
       <Header>
         <div>
           <h3>{user?.name}</h3>
-          <StyledButton color="outline-black" widthsize="small">
-            Sair
+          <StyledButton
+            color="outline-black"
+            widthsize="small"
+            onClick={() => handleLogout()}
+          >
+             Sair
           </StyledButton>
         </div>
       </Header>
-      <MenuStyled>
-        <IconsContainer>
-          <img
-            src={Home}
-            alt="Ícone de uma casa, na cor verde, representando o botão de retornar para a página de início"
-          />
-          <h3>Início</h3>
-        </IconsContainer>
-        <IconsContainer>
-          <Link to="/dashboard/profile">
+      <ContentWrapper>
+        <MenuStyled>
+          <IconsContainer>
             <img
-              src={Profile}
-              alt="Ícone de uma pessoa, na cor verde, representando o botão de retornar para a página de perfil"
+              src={Home}
+              alt="Ícone de uma casa, na cor verde, representando o botão de retornar para a página de início"
             />
-            <h3>Informações de Perfil</h3>
-          </Link>
-        </IconsContainer>
-        <IconsContainer>
-          <img
-            src={Projects}
-            alt="Ícone de projetos empilhados, na cor verde, representando o botão de retornar para a página de projetos"
-          />
-          <h3>Meus Projetos</h3>
-        </IconsContainer>
-      </MenuStyled>
-      <SectionStyled>
-        <TittleAndButtonContainer>
-          <h2>Meus Projetos</h2>
-          <StyledButton color="solid-green" widthsize="large1">
-            <img src={AddCircle} alt="Ícone de adição na cor branca" />
-            Adicionar Projeto
-          </StyledButton>
-        </TittleAndButtonContainer>
-        <ProjectList>
-          {projectList?.length !== 0 ? (
-            <ProjectCard />
-          ) : (
-            <h3>Nenhum projeto cadastrado</h3>
-          )}
-        </ProjectList>
-      </SectionStyled>
+            <h3>Início</h3>
+          </IconsContainer>
+          <IconsContainer>
+            <Link to="/dashboard/profile">
+              <img
+                src={Profile}
+                alt="Ícone de uma pessoa, na cor verde, representando o botão de retornar para a página de perfil"
+              />
+              <h3>Informações de Perfil</h3>
+            </Link>
+          </IconsContainer>
+          <IconsContainer>
+            <img
+              src={Projects}
+              alt="Ícone de projetos empilhados, na cor verde, representando o botão de retornar para a página de projetos"
+            />
+            <h3>Meus Projetos</h3>
+          </IconsContainer>
+        </MenuStyled>
+        <SectionStyled>
+          <TittleAndButtonContainer>
+            <h2>Meus Projetos</h2>
+            <StyledButton color="solid-green" widthsize="large1">
+              <img src={AddCircle} alt="Ícone de adição na cor branca" />
+              Adicionar Projeto
+            </StyledButton>
+          </TittleAndButtonContainer>
+          <ProjectList>
+            {projectList?.length !== 0 ? (
+              <ProjectCard />
+            ) : (
+              <h3>Nenhum projeto cadastrado</h3>
+            )}
+          </ProjectList>
+        </SectionStyled>
+      </ContentWrapper>
       <Footer />
     </Container>
   );

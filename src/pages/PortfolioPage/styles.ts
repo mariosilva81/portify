@@ -19,6 +19,16 @@ export const StyledHeader = styled.header`
   }
 `;
 
+export const PageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`;
+
+export const ContentWrapper = styled.div`
+  flex: 1;
+`;
+
 export const UserContainer = styled.div`
   display: flex;
   flex-direction: column;

@@ -55,7 +55,7 @@ export const PortfolioProvider = ({ children }: IPortfolioProviderProps) => {
     const portfolioId = JSON.parse(localStorage.getItem("@PORTFOLIOID")!);
 
     try {
-      const { data } = await api.put(`/portfolios/${portfolioId}`, formData, {
+      const { data } = await api.patch(`/portfolios/${portfolioId}`, formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
