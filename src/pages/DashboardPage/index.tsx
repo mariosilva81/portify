@@ -3,7 +3,7 @@ import { Header } from "../../components/Header";
 import profile from "../../assets/icons/profile.png";
 import projects from "../../assets/icons/projects.png";
 import home from "../../assets/icons/home.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../providers/UserContext/UserContext";
 import { StyledHeaderButton, StyledMain, StyledNav } from "./styles";
@@ -16,11 +16,7 @@ export const DashboardPage = () => {
   const { userLogout, user } = useContext(UserContext);
   const { verifyPortfolio } = useContext(PortfolioContext);
 
-  const handleImageClick = () => {
-    console.log("Clicado");
-    console.log(!isPortfolio);
-    setIsPortfolio(!isPortfolio);
-  };
+  const navigate = useNavigate();
 
   useEffect(() => {
     const hasPortfolio = async () => {
@@ -52,7 +48,7 @@ export const DashboardPage = () => {
         <p>Selecione uma das opções abaixo</p>
 
         <StyledNav>
-          <Link to="/dashboard" onClick={() => handleImageClick()}>
+          <Link to="/dashboard">
             <figure>
               <img
                 src={home}
@@ -83,19 +79,19 @@ export const DashboardPage = () => {
         </StyledNav>
 
         {isPortfolio ? (
+            <section>
+              <p>Seu portfólio está publicado</p>
+              <h1> Seu portfólio wwwww</h1>
+            </section>
+        ) : (
           <section>
             <p>Seu portfólio ainda não está publicado</p>
             <Button
               name="Publicar portfólio"
               color="solid-green"
               widthsize="large1"
-              onClick={() => handleImageClick()}
+              onClick={() => navigate("/dashboard/profile")}
             />
-          </section>
-        ) : (
-          <section>
-            <p>Seu portfólio está publicado</p>
-            <h1> Seu portfólio wwwww</h1>
           </section>
         )}
       </StyledMain>

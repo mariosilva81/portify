@@ -41,7 +41,7 @@ export const PortfolioProvider = ({ children }: IPortfolioProviderProps) => {
       localStorage.setItem("@COLORTHEME", data.color);
 
       toast.success("Portfólio criado com sucesso.");
-      navigate("/dashboard/published");
+      navigate("/dashboard");
     } catch (error: AxiosError | any) {
       toast.error("Não foi possível criar este portfólio.");
       console.error(error.message);
@@ -62,7 +62,7 @@ export const PortfolioProvider = ({ children }: IPortfolioProviderProps) => {
       setPortfolio(data);
       localStorage.setItem("@COLORTHEME", data.color);
       toast.success("Portfólio atualizado com sucesso.");
-      navigate("/dashboard/published");
+      navigate("/dashboard");
     } catch (error: AxiosError | any) {
       toast.error("Não foi possível editar este portfólio.");
       console.error(error.message);
@@ -82,7 +82,6 @@ export const PortfolioProvider = ({ children }: IPortfolioProviderProps) => {
           return false;
         }
       } catch (error: AxiosError | any) {
-        toast.error("Ops! Algo deu errado.");
         console.error(error.message);
         return false;
       }

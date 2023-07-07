@@ -13,11 +13,11 @@ export const App = () => {
       <ResetStyles />
       <GlobalStyles />
 			<UserProvider>
-				<PortfolioProvider>
 					<ProjectsProvider>
+				<PortfolioProvider>
       			<RoutesMain />
-					</ProjectsProvider>
 				</PortfolioProvider>
+					</ProjectsProvider>
 			</UserProvider>
       <ToastContainer 
 				position="top-right"
