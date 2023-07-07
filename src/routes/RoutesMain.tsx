@@ -8,15 +8,8 @@ import { PortfolioPage } from "../pages/PortfolioPage";
 import { PublicsRoutes } from "./PublicsRoutes";
 import { PrivatesRoutes } from "./PrivatesRoutes";
 import { DashboardPage } from '../pages/DashboardPage';
-import { useContext } from 'react';
-import { UserContext } from '../providers/UserContext/UserContext';
-
 
 export const RoutesMain = () => {
-	const { user } = useContext(UserContext)
-	
-	const portfolioLink = `portfolio/${user?.id}`
-
 	return (
 		<Routes>
 			<Route element={<PublicsRoutes />}>
@@ -29,7 +22,7 @@ export const RoutesMain = () => {
 				<Route path="/dashboard" element={<DashboardPage />} />
 				<Route path="/dashboard/profile" element={<ProfilePage />} />
 				<Route path="/dashboard/projects" element={<ProjectsPage />} />
-				{/* <Route path={portfolioLink} element={<PortfolioPage />} /> */}
+				<Route path="/portfolio" element={<PortfolioPage />} />
 		</Routes>
 	);
 };
