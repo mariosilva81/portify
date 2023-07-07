@@ -22,7 +22,7 @@ import { ProjectsContext } from "../../../providers/ProjectsContext/ProjectsCont
 export const ProjectsPage = () => {
   const { user } = useContext(UserContext);
   const { projectList } = useContext(ProjectsContext);
-
+  
   return (
     <Container>
       <Header>

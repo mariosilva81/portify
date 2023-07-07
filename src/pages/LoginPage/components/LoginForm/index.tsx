@@ -20,8 +20,9 @@ export const LoginForm = () => {
 
   const { userLogin, loading } = useContext(UserContext);
 
-  const submit: SubmitHandler<TLoginForm> = (formData) => {
-    userLogin(formData);
+  const submit: SubmitHandler<TLoginForm> = async (formData) => {
+    await userLogin(formData);
+    
     reset();
   };
 

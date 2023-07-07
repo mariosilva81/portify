@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { api } from "../../services/api";
 import {
   IUserContext,
@@ -45,7 +45,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       setLoading(false);
     }
   };  
-
+  
   const userRegister = async (formData: TRegisterForm) => {
     try {
       setLoading(true);
