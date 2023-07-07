@@ -4,6 +4,8 @@ import { RoutesMain } from "./routes/RoutesMain";
 import { GlobalStyles } from "./styles/globalStyles";
 import { ResetStyles } from "./styles/resetStyles";
 import { UserProvider } from "./providers/UserContext/UserContext";
+import { PortfolioProvider } from './providers/PortfolioContext/PortfolioContext';
+import { ProjectsProvider } from './providers/ProjectsContext/ProjectsContext';
 
 export const App = () => {
   return (
@@ -11,7 +13,11 @@ export const App = () => {
       <ResetStyles />
       <GlobalStyles />
 			<UserProvider>
-      	<RoutesMain />
+				<PortfolioProvider>
+					<ProjectsProvider>
+      			<RoutesMain />
+					</ProjectsProvider>
+				</PortfolioProvider>
 			</UserProvider>
       <ToastContainer 
 				position="top-right"

@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { api } from "../../services/api";
 import {
   IUserContext,
@@ -45,7 +45,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       setLoading(false);
     }
   };  
-
+  
   const userRegister = async (formData: TRegisterForm) => {
     try {
       setLoading(true);
@@ -54,7 +54,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       
       toast.success("Usuário criado com sucesso.");
 
-      navigate("/");
+      navigate("/login");
     } catch (error: AxiosError | any) {
       toast.error("E-mail já existente.");
 

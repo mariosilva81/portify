@@ -4,6 +4,10 @@ export const StyledContainerFields = styled.div`
   gap: 1rem;
   display: flex;
   flex-direction: column;
+
+  p {
+    color: red;
+  }
 `;
 
 export const StyledContainerButtons = styled.div`
