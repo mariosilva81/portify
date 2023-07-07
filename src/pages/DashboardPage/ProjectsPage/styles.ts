@@ -5,6 +5,8 @@ export const Container = styled.div`
   flex-direction: column;
   gap: 1rem;
 
+  min-height: 100vh;
+
   section {
     padding-left: 15%;
     padding-right: 15%;
@@ -12,6 +14,12 @@ export const Container = styled.div`
     margin-top: 1rem;
     margin-bottom: 2rem;
   }
+`;
+
+export const ContentWrapper = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const SectionStyled = styled.section`
