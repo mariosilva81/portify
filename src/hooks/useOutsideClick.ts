@@ -13,7 +13,7 @@ export const useOutsideClick = (options?: IUseOutsideClick): RefObject<HTMLDivEl
       if (ref.current && !ref.current.contains(event.target as Node)) {
         if (callback) callback();
       }
-    }
+    };
 
     document.addEventListener("mousedown", handleOutsideClick);
 
@@ -23,4 +23,4 @@ export const useOutsideClick = (options?: IUseOutsideClick): RefObject<HTMLDivEl
   }, [callback]);
 
   return ref;
-}
+};

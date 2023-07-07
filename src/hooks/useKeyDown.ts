@@ -1,6 +1,6 @@
 import { useEffect, useRef, MutableRefObject } from "react";
 
-interface IUseKeyDown {
+export interface IUseKeyDown {
   keyName: string;
   callback?: () => void;
 }
@@ -16,7 +16,7 @@ export const useKeyDown = (
       if (event.key === keyName) {
         if (callback) callback();
       }
-    }
+    };
 
     document.addEventListener("keydown", handleKeyDown);
 
@@ -26,4 +26,4 @@ export const useKeyDown = (
   }, []);
 
   return ref;
-}
+};
