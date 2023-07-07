@@ -73,17 +73,32 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     navigate("/");
   };
 
-  useEffect(() => {
-    const getUser = () => {
-      const token = localStorage.getItem("@TOKEN");
+  useEffect(() => { 
+    const getUser = async () => { 
+      const token = localStorage.getItem("@TOKEN"); 
       const userId = JSON.parse(localStorage.getItem("@USERID")!); 
-
-      if (token && userId) {
-        navigate(currentPath);
-      }
-    };
-    getUser();
-  }, []);
+      
+      if (token && userId) { 
+        try { 
+          setLoading(true); 
+          
+          const response = await api.get(`/users/${userId}`, { 
+            headers: { 
+              Authorization: `Bearer ${token}`, 
+            }, }); 
+            
+            const userData = response.data; 
+            
+            setUser(userData); 
+          } catch (error: AxiosError | any) { 
+            console.error(error.message); 
+          } finally { 
+            setLoading(false); 
+          } 
+        } 
+      }; 
+      getUser(); 
+    }, []); 
 
   return (
     <UserContext.Provider
