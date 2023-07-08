@@ -1,16 +1,5 @@
 import styled from "styled-components";
 
-export const StyledContainerHeader = styled.div`
-  display: flex;
-  align-items: center;
-
-  @media (max-width: 675px) {
-    .hidden {
-      display: none;
-    }
-  }
-`;
-
 export const StyledContainerMain = styled.div`
   display: flex;
   align-items: center;

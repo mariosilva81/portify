@@ -5,15 +5,23 @@ export const StyledContainerFields = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
 
-  p {
-    color: red;
-    font-weight: var(--font-weight-1);
-  }
-
   @media (max-width: 550px) {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+  }
+`;
+
+export const StyledContainerIntern = styled.div`
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+
+  p {
+    color: red;
+    font-size: var(--font-size-1);
+    font-weight: var(--font-weight-1);
+    font-family: var(--font-family-secondary);
   }
 `;
 

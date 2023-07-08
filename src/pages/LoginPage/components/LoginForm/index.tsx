@@ -30,10 +30,10 @@ export const LoginForm = () => {
     <form onSubmit={handleSubmit(submit)}>
       <StyledContainerFields>
         <Input type="email" placeholder="E-mail" {...register("email")} />
-        {errors.email && <p>{errors.email.message}</p>}
+        {errors.email ? <span>{errors.email.message}</span> : null}
 
         <Input type="password" placeholder="Senha" {...register("password")} />
-        {errors.password && <p>{errors.password.message}</p>}
+        {errors.password ? <span>{errors.password.message}</span> : null}
       </StyledContainerFields>
 
       <StyledContainerButtons>
