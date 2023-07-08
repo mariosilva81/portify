@@ -2,7 +2,7 @@ import { useState, MutableRefObject, RefObject } from 'react';
 import { IUseKeyDown, useKeyDown } from "../../../../../hooks/useKeyDown";
 import { useOutsideClick } from "../../../../../hooks/useOutsideClick";
 import CloseButtonBlack from "../../../../../assets/icons/close-black.png"
-import { StyledModal } from '../ModalForm/styles';
+import { StyledModal } from '../AddProjectModal/styles';
 
 interface EditProjectModalProps {
   setOpenEditModal: React.Dispatch<React.SetStateAction<boolean>>;

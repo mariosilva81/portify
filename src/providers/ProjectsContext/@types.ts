@@ -1,5 +1,5 @@
 import React from "react";
-import { TModalForm } from "../../pages/DashboardPage/ProjectsPage/components/ModalForm/schema";
+import { TModalForm } from "../../pages/DashboardPage/ProjectsPage/components/AddProjectModal/components/AddForm/schema";
 
 export interface IProjectsProviderProps {
   children: React.ReactNode;

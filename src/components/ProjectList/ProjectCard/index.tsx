@@ -2,7 +2,7 @@ import Edit from "../../../assets/icons/edit.png";
 import Delete from "../../../assets/icons/delete.png";
 import Git from "../../../assets/icons/github.png";
 import Link from "../../../assets/icons/link.png";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { ProjectsContext } from "../../../providers/ProjectsContext/ProjectsContext";
 import { ImagesContainer, StyledProjectCard } from "./styles";
 
@@ -16,15 +16,12 @@ export const ProjectCard = ({ setOpenEditModal }: EditProjectModalProps) => {
   );
 
   const { deleteProject, projectList } = useContext(ProjectsContext);
+  console.log(projectList);
 
   const handleDelete = (projectID: number | undefined) => {
     if (typeof projectID === "number") {
       deleteProject(projectID);
     }
-  };
-
-  const redirectLinks = (route: string) => {
-    window.location.replace(route);
   };
 
   return (
@@ -80,4 +77,4 @@ export const ProjectCard = ({ setOpenEditModal }: EditProjectModalProps) => {
       })}
     </>
   );
-};
+

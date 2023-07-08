@@ -17,12 +17,15 @@ import { ProjectsContext } from "../../../providers/ProjectsContext/ProjectsCont
 import { NavBar } from '../../../components/NavBar';
 import { AddProjectModal } from './components/AddProjectModal';
 import { EditProjectModal } from './components/EditProjectModal';
+import { PortfolioContext } from "../../../providers/PortfolioContext/PortfolioContext";
 
 export const ProjectsPage = () => {
   const { user, userLogout } = useContext(UserContext);
   const { projectList } = useContext(ProjectsContext);
   const [openAddModal, setOpenAddModal] = useState(false);
   const [openEditModal, setOpenEditModal] = useState(false);
+
+  const{ isPortfolioId } = useContext(PortfolioContext);
 
   return (
     <Container>
@@ -57,8 +60,8 @@ export const ProjectsPage = () => {
           </ProjectList>
         </SectionStyled>
       </ContentWrapper>
-      {openAddModal && <AddProjectModal setOpenAddModal={setOpenAddModal}/>}
-      {openEditModal && <EditProjectModal setOpenEditModal={setOpenEditModal}/>}
+      {openAddModal && <AddProjectModal setOpenAddModal={setOpenAddModal} isPortfolioId={isPortfolioId} />}
+      {openEditModal && <EditProjectModal setOpenEditModal={setOpenEditModal} />}
       <Footer />
     </Container>
   );

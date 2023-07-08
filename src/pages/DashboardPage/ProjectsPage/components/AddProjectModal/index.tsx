@@ -1,51 +1,46 @@
-import { MutableRefObject, RefObject, useContext } from 'react';
-import { IUseKeyDown, useKeyDown } from "../../../../../hooks/useKeyDown";
+import { RefObject, useEffect } from "react";
 import { useOutsideClick } from "../../../../../hooks/useOutsideClick";
-import CloseButtonBlack from "../../../../../assets/icons/close-black.png"
-import { StyledModal } from '../ModalForm/styles';
-import { ModalForm } from '../ModalForm';
-import { StyledButton } from '../../../../../components/Button/styles';
-import { ProjectsContext } from '../../../../../providers/ProjectsContext/ProjectsContext';
+import CloseButtonBlack from "../../../../../assets/icons/close-black.png";
+import { StyledModal } from "./styles";
+import { AddForm } from "./components/AddForm";
 
 interface AddProjectModalProps {
   setOpenAddModal: React.Dispatch<React.SetStateAction<boolean>>;
+  isPortfolioId: number | null;
 }
 
-export const AddProjectModal = ({ setOpenAddModal }: AddProjectModalProps) => {
-  const { createProject } = useContext(ProjectsContext);
-
+export const AddProjectModal = ({
+  setOpenAddModal,
+  isPortfolioId,
+}: AddProjectModalProps) => {
   const modalRef: RefObject<HTMLDivElement> = useOutsideClick({
     callback: () => {
       setOpenAddModal(false);
     },
   });
 
-  const buttonRef: MutableRefObject<IUseKeyDown> = useKeyDown("Escape", () => {
-    setOpenAddModal(false);
-  });
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpenAddModal(false);
+      }
+    };
 
-  const handleCreateProject = () => {
-    setOpenAddModal(false);
-    createProject(formData, );
-  };
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [setOpenAddModal]);
 
   return (
     <StyledModal role="dialog">
       <div ref={modalRef}>
-        <h1>Modal de Criar Projeto</h1>
-        <img
-          src={CloseButtonBlack} 
-          ref={buttonRef} 
-          onClick={() => setOpenAddModal(false)}
-        />
-        <ModalForm>
-          <StyledButton 
-            color="solid-green" 
-            widthsize="large1" 
-            onClick={() => handleCreateProject}>
-              Criar Projeto
-            </StyledButton> 
-        </ModalForm>
+        <div className="title-container">
+          <h1>Modal de Criar Projeto</h1>
+          <img src={CloseButtonBlack} onClick={() => setOpenAddModal(false)} />
+        </div>
+        <AddForm isPortfolioId={isPortfolioId} setOpenAddModal={setOpenAddModal} />
       </div>
     </StyledModal>
   );

@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const modalFormSchema = z.object({
+export const EditFormSchema = z.object({
   name: z.string()
     .nonempty("O nome é obrigatório.")
     .min(3, "O nome deve ter no mínimo 3 caracteres.")
@@ -16,4 +16,4 @@ export const modalFormSchema = z.object({
   img: z.string(),
 });
 
-export type TModalForm = z.infer<typeof modalFormSchema>;
+export type TEditForm = z.infer<typeof EditFormSchema>;
