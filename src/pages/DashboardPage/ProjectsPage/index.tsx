@@ -3,17 +3,13 @@ import { StyledButton } from "../../../components/Button/styles";
 import { Footer } from "../../../components/Footer";
 import { Header } from "../../../components/Header";
 import { UserContext } from "../../../providers/UserContext/UserContext";
-import Home from "../../../assets/icons/home.png";
-import Profile from "../../../assets/icons/profile.png";
-import Projects from "../../../assets/icons/projects.png";
 import AddCircle from "../../../assets/icons/add-circle.png";
 import {
   Container,
-  IconsContainer,
-  MenuStyled,
   TittleAndButtonContainer,
   SectionStyled,
   ContentWrapper,
+  NameButtonContainer,
 } from "./styles";
 import { ProjectList } from "../../../components/ProjectList";
 import { ProjectCard } from "../../../components/ProjectList/ProjectCard";
@@ -27,7 +23,7 @@ export const ProjectsPage = () => {
   return (
     <Container>
       <Header>
-        <div>
+        <NameButtonContainer>
           <h3>{user?.name}</h3>
           <StyledButton
             color="outline-black"
@@ -36,10 +32,10 @@ export const ProjectsPage = () => {
           >
              Sair
           </StyledButton>
-        </div>
+        </NameButtonContainer>
       </Header>
       <ContentWrapper>
-      <NavBar />
+      <NavBar/>
         <SectionStyled>
           <TittleAndButtonContainer>
             <h2>Meus Projetos</h2>

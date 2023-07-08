@@ -1,15 +1,17 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { IProject, IProjectsContext, IProjectsProviderProps } from "./@types";
 import { api } from "../../services/api";
 import { toast } from "react-toastify";
 import { AxiosError } from "axios";
 import { TModalForm } from "../../pages/DashboardPage/ProjectsPage/components/ModalForm/schema";
 import { UserContext } from "../UserContext/UserContext";
+import { PortfolioContext } from "../PortfolioContext/PortfolioContext";
 
 export const ProjectsContext = createContext({} as IProjectsContext);
 
 export const ProjectsProvider = ({ children }: IProjectsProviderProps) => {
   const { setLoading } = useContext(UserContext);
+  const { isPortfolioId } = useContext(PortfolioContext);
 
   const [projectList, setProjectList] = useState<IProject[]>([]);
 
@@ -72,6 +74,30 @@ export const ProjectsProvider = ({ children }: IProjectsProviderProps) => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    const getProjects = async () => {
+      const token = JSON.parse(localStorage.getItem("@USERID")!);
+      const portfolioId = isPortfolioId;
+
+      if (portfolioId) {
+        try {
+          const { data } = await api.get(
+            `/portfolios/${portfolioId}/projects/`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+          setProjectList(data);
+        } catch (error: AxiosError | any) {
+          console.error(error);
+        }
+      }
+    };
+    getProjects();
+  }, [isPortfolioId]);
 
   return (
     <ProjectsContext.Provider

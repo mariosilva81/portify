@@ -14,9 +14,9 @@ export interface IPortfolio {
 
 export interface IPortfolioContext {
   portfolio: IPortfolio | null;
+  isPortfolioId: number | null;
   setPortfolio: React.Dispatch<React.SetStateAction<IPortfolio | null>>;
   createPortfolio: (formData: TCreateProfileForm, userId: number) => Promise<void>;
   editPortfolio: (formData: TEditProfileForm) => Promise<void>;
-  searchPortfolioProjects: () => Promise<any>;
   verifyPortfolio: () => Promise<boolean>;
 }
