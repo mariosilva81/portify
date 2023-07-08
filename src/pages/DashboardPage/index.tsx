@@ -28,7 +28,7 @@ export const DashboardPage = () => {
     <>
       <Header>
         <StyledHeaderButton>
-          <h3> {user?.name}</h3>
+          <h3>{user?.name}</h3>
 
           <Button
             name="Sair"
@@ -38,6 +38,7 @@ export const DashboardPage = () => {
           />
         </StyledHeaderButton>
       </Header>
+
       <StyledMain>
         <h1>
           Seja bem vindo: <span> {user?.name}</span>
@@ -48,8 +49,11 @@ export const DashboardPage = () => {
 
         {isPortfolio ? (
           <section>
-            <p>Seu portfólio está publicado</p>
-            <a href="/portfolio" target="_blank">www.portify.com.br/portfolio</a>
+            <h2>Seu portfólio está online</h2>
+            <small>Acesse em</small>
+            <a href="/portfolio" target="_blank">
+              www.portify.com.br/portfolio
+            </a>
           </section>
         ) : (
           <section>

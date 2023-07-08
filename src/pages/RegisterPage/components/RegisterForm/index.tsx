@@ -1,11 +1,16 @@
 import { UserContext } from "../../../../providers/UserContext/UserContext";
-import { StyledContainerButton, StyledContainerFields } from "./styles";
 import { TRegisterForm, registerFormSchema } from "./schema";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Button } from "../../../../components/Button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "../../../../components/Input";
 import { useContext } from "react";
+
+import {
+  StyledContainerButton,
+  StyledContainerFields,
+  StyledContainerIntern,
+} from "./styles";
 
 interface TBodyForm {
   name: string;
@@ -38,21 +43,33 @@ export const RegisterForm = () => {
   return (
     <form onSubmit={handleSubmit(submit)}>
       <StyledContainerFields>
-        <Input type="text" placeholder="Nome" {...register("name")} />
-        {errors.name && <p>{errors.name.message}</p>}
+        <StyledContainerIntern>
+          <Input type="text" placeholder="Nome" {...register("name")} />
+          {errors.name && <p>{errors.name.message}</p>}
+        </StyledContainerIntern>
 
-        <Input type="email" placeholder="E-mail" {...register("email")} />
-        {errors.email && <p>{errors.email.message}</p>}
+        <StyledContainerIntern>
+          <Input type="email" placeholder="E-mail" {...register("email")} />
+          {errors.email && <p>{errors.email.message}</p>}
+        </StyledContainerIntern>
 
-        <Input type="password" placeholder="Senha" {...register("password")} />
-        {errors.password && <p>{errors.password.message}</p>}
+        <StyledContainerIntern>
+          <Input
+            type="password"
+            placeholder="Senha"
+            {...register("password")}
+          />
+          {errors.password && <p>{errors.password.message}</p>}
+        </StyledContainerIntern>
 
-        <Input
-          type="password"
-          placeholder="Confirme sua senha"
-          {...register("confirmPassword")}
-        />
-        {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
+        <StyledContainerIntern>
+          <Input
+            type="password"
+            placeholder="Confirme sua senha"
+            {...register("confirmPassword")}
+          />
+          {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
+        </StyledContainerIntern>
       </StyledContainerFields>
 
       <StyledContainerButton>

@@ -15,10 +15,8 @@ export const RegisterPage = () => {
   return (
     <>
       <Header>
-        <StyledContainerHeader>
           <Link to="/register">
             <Button
-              type="button"
               widthsize="med"
               name="cadastre-se"
               className="hidden"
@@ -28,13 +26,11 @@ export const RegisterPage = () => {
 
           <Link to="/login">
             <Button
-              type="button"
               widthsize="large1"
               color="solid-green"
               name="acesse seu portfólio"
             />
           </Link>
-        </StyledContainerHeader>
       </Header>
 
       <main>
@@ -47,7 +43,7 @@ export const RegisterPage = () => {
               />
               voltar
             </StyledLink>
-
+            
             <h1>Cadastre-se</h1>
             <p>Preencha os campos abaixo para criar uma conta</p>
           </StyledContainerHeading>
@@ -57,6 +53,7 @@ export const RegisterPage = () => {
           </StyledContainerForm>
         </StyledContainerMain>
       </main>
+
       <Footer />
     </>
   );

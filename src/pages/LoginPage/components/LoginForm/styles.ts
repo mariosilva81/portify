@@ -5,8 +5,11 @@ export const StyledContainerFields = styled.div`
   display: flex;
   flex-direction: column;
 
-  p {
+  span {
     color: red;
+    font-size: var(--font-size-1);
+    font-weight: var(--font-weight-1);
+    font-family: var(--font-family-secondary);
   }
 `;
 
