@@ -11,8 +11,17 @@ export const StyledProjectCard = styled.li`
     color: var(--color-black);
   }
 
-  img {
-    cursor: pointer;
+  .img-project {
+    border: 1px solid var(--color-black);
+    border-radius: 1.25rem;
+    width: 250px;
+    height: 150px;
+  }
+
+  .title-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 
   @media (min-width: 800px) {

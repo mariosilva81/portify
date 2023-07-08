@@ -13,10 +13,12 @@ export const ProjectCard = () => {
     "/dashboard/projects"
   );
 
-  const { deleteProject, projectList   } = useContext(ProjectsContext);
+  const { deleteProject, projectList } = useContext(ProjectsContext);
 
-  const handleDelete = (projectID: number) => {
-    deleteProject(projectID);
+  const handleDelete = (projectID: number | undefined) => {
+    if (typeof projectID === "number") {
+      deleteProject(projectID);
+    }
   };
 
   const redirectLinks = (route: string) => {
@@ -29,14 +31,17 @@ export const ProjectCard = () => {
         if (isDashboardProjects) {
           return (
             <StyledProjectCard key={project.id}>
-              <h1>{project.name}</h1>
+              <div className="title-container">
+                {<img className="img-project" src={project.img} />}
+                <h1>{project.name}</h1>
+                <p>{project.description}</p>
+              </div>
               <ImagesContainer>
                 <img
                   src={Edit}
                   alt="Ícone de um lápis na cor verde que simboliza um botão para editar o projeto"
                   onClick={() => {
                     setIsOpenEdit(true);
-                    handleDelete(project.id);
                   }}
                 />
                 <img
@@ -44,7 +49,6 @@ export const ProjectCard = () => {
                   alt="Ícone de uma lixeira na cor verde que simboliza um botão para excluir o projeto"
                   onClick={() => {
                     handleDelete(project.id);
-                    setIsOpenEdit(true);
                   }}
                 />
               </ImagesContainer>
@@ -53,7 +57,6 @@ export const ProjectCard = () => {
         } else {
           return (
             <StyledProjectCard key={project.id}>
-              <h1>{project.name}</h1>
               <ImagesContainer>
                 <img
                   src={Git}
@@ -62,13 +65,12 @@ export const ProjectCard = () => {
                     redirectLinks(project.repository);
                   }}
                 />
-                <img
-                  src={Link}
-                  alt="Ícone de um link na cor verde que simboliza um botão para acessar o projeto"
-                  onClick={() => {
-                    redirectLinks(project.link);
-                  }}
-                />
+                <a href={project.link} target="_blank">
+                  <img
+                    src={Link}
+                    alt="Ícone de um link na cor verde que simboliza um botão para acessar o projeto"
+                  />
+                </a>
               </ImagesContainer>
             </StyledProjectCard>
           );

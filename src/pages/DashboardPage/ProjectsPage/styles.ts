@@ -16,6 +16,16 @@ export const Container = styled.div`
   }
 `;
 
+export const NameButtonContainer = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+    h3{
+      color:var(--color-white);
+    }
+`;
+
 export const ContentWrapper = styled.div`
   flex: 1;
   display: flex;
@@ -26,42 +36,6 @@ export const SectionStyled = styled.section`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-`;
-
-export const MenuStyled = styled.div`
-  display: flex;
-  gap: 1.25rem;
-  padding-left: 15%;
-  padding-right: 15%;
-`;
-
-export const IconsContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-
-  cursor: pointer;
-
-  img {
-    width: 30px;
-  }
-
-  h3 {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--color-black);
-
-    a {
-      display: flex;
-      align-items: center;
-      color: inherit;
-      text-decoration: none;
-
-      &:hover {
-        color: var(--color-primary);
-      }
-    }
-  }
 `;
 
 export const TittleAndButtonContainer = styled.div`
