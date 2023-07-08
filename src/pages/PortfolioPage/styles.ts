@@ -4,14 +4,13 @@ export const StyledHeader = styled.header`
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 100%;
   padding-left: 15%;
   padding-right: 15%;
   height: 4.375rem;
   gap: 0.625rem;
 
-  background-color: var(--color-white);
+  background: ${(props) => props.theme.colors.background};
 
   img {
     width: 5.3125rem;
@@ -27,6 +26,8 @@ export const PageWrapper = styled.div`
 
 export const ContentWrapper = styled.div`
   flex: 1;
+  background: ${(props) => props.theme.colors.background};
+  color: ${(props) => props.theme.colors.text};
 `;
 
 export const UserContainer = styled.div`
@@ -36,9 +37,10 @@ export const UserContainer = styled.div`
   margin-top: 1rem;
   padding-left: 15%;
   padding-right: 15%;
+  color: ${(props) => props.theme.colors.text};
 
   p {
-    color: var(--color-black);
+    /* color: var(--color-black); */
 
     font-size: var(--font-size-3);
 
@@ -58,14 +60,14 @@ export const UserInfoContainer = styled.div`
   h2 {
     font-size: 40px;
 
-    color: var(--color-black);
+    /* color: var(--color-black); */
   }
 
   p {
     font-size: var(--font-size-3);
     font-weight: 700;
 
-    color: var(--color-primary);
+    /* color: var(--color-primary); */
   }
 
   @media (min-width: 800px) {
@@ -87,6 +89,6 @@ export const SectionStyled = styled.section`
   h1 {
     font-size: 36px;
 
-    color: var(--color-black);
+    /* color: var(--color-black); */
   }
 `;
