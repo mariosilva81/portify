@@ -1,5 +1,5 @@
 import logo from "../../assets/images/logo-white.png";
-import { SytledHeader } from "./styles";
+import { StyledHeader, StyledContainerHeader } from "./styles";
 
 interface IHeaderProps {
   children: React.ReactNode;
@@ -7,9 +7,9 @@ interface IHeaderProps {
 
 export const Header: React.FC<IHeaderProps> = ({ children }) => {
   return (
-    <SytledHeader>
+    <StyledHeader>
       <img src={logo} alt="Logotipo da Página" />
-      {children}
-    </SytledHeader>
+      <StyledContainerHeader>{children}</StyledContainerHeader>
+    </StyledHeader>
   );
 };
