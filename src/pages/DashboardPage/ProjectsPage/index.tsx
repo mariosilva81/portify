@@ -17,18 +17,12 @@ import {
 } from "./styles";
 import { ProjectList } from "../../../components/ProjectList";
 import { ProjectCard } from "../../../components/ProjectList/ProjectCard";
-import { Link } from "react-router-dom";
 import { ProjectsContext } from "../../../providers/ProjectsContext/ProjectsContext";
+import { NavBar } from '../../../components/NavBar';
 
 export const ProjectsPage = () => {
-  const { user } = useContext(UserContext);
+  const { user, userLogout } = useContext(UserContext);
   const { projectList } = useContext(ProjectsContext);
-
-  const handleLogout = () => {
-    window.location.href = "/";
-    localStorage.removeItem("@TOKEN");
-    localStorage.removeItem("@USERID");
-  };
 
   return (
     <Container>
@@ -38,38 +32,14 @@ export const ProjectsPage = () => {
           <StyledButton
             color="outline-black"
             widthsize="small"
-            onClick={() => handleLogout()}
+            onClick={() => userLogout()}
           >
              Sair
           </StyledButton>
         </div>
       </Header>
       <ContentWrapper>
-        <MenuStyled>
-          <IconsContainer>
-            <img
-              src={Home}
-              alt="Ícone de uma casa, na cor verde, representando o botão de retornar para a página de início"
-            />
-            <h3>Início</h3>
-          </IconsContainer>
-          <IconsContainer>
-            <Link to="/dashboard/profile">
-              <img
-                src={Profile}
-                alt="Ícone de uma pessoa, na cor verde, representando o botão de retornar para a página de perfil"
-              />
-              <h3>Informações de Perfil</h3>
-            </Link>
-          </IconsContainer>
-          <IconsContainer>
-            <img
-              src={Projects}
-              alt="Ícone de projetos empilhados, na cor verde, representando o botão de retornar para a página de projetos"
-            />
-            <h3>Meus Projetos</h3>
-          </IconsContainer>
-        </MenuStyled>
+      <NavBar />
         <SectionStyled>
           <TittleAndButtonContainer>
             <h2>Meus Projetos</h2>

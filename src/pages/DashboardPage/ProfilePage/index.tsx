@@ -11,6 +11,7 @@ import {
   StyledContainerMain,
   StyledContainerUserData,
 } from "./styles";
+import { NavBar } from '../../../components/NavBar';
 
 export const ProfilePage = () => {
   const [hasPortfolio, setHasPortfolio] = useState<boolean>(false);
@@ -44,6 +45,7 @@ export const ProfilePage = () => {
       </Header>
 
       <main>
+        <NavBar />
         <StyledContainerMain>
           <h1>Informações no perfil:</h1>
 
