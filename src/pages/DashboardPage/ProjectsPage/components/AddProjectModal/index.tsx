@@ -1,32 +1,52 @@
-import { useState, MutableRefObject, RefObject } from 'react';
+import { MutableRefObject, RefObject, useContext } from 'react';
 import { IUseKeyDown, useKeyDown } from "../../../../../hooks/useKeyDown";
 import { useOutsideClick } from "../../../../../hooks/useOutsideClick";
 import CloseButtonBlack from "../../../../../assets/icons/close-black.png"
-import CloseButtonWhite from "../../../../../assets/icons/close-white.png"
+import { StyledModal } from '../ModalForm/styles';
+import { ModalForm } from '../ModalForm';
+import { StyledButton } from '../../../../../components/Button/styles';
+import { ProjectsContext } from '../../../../../providers/ProjectsContext/ProjectsContext';
 
-export const AddProjectModal = () => {
-  const [isOpen, setIsOpen] = useState(false);
+interface AddProjectModalProps {
+  setOpenAddModal: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-  // const modalRef: RefObject<HTMLDivElement> = useOutsideClick({
-  //   callback: () => {
-  //     setIsOpen(false);
-  //   },
-  // });
+export const AddProjectModal = ({ setOpenAddModal }: AddProjectModalProps) => {
+  const { createProject } = useContext(ProjectsContext);
 
-  // const buttonRef: MutableRefObject<IUseKeyDown> = useKeyDown("Escape", (element: { click: () => void; }) => {
-  //   element.click()
-  // });
+  const modalRef: RefObject<HTMLDivElement> = useOutsideClick({
+    callback: () => {
+      setOpenAddModal(false);
+    },
+  });
+
+  const buttonRef: MutableRefObject<IUseKeyDown> = useKeyDown("Escape", () => {
+    setOpenAddModal(false);
+  });
+
+  const handleCreateProject = () => {
+    setOpenAddModal(false);
+    createProject(formData, );
+  };
 
   return (
-    <div role="dialog">
+    <StyledModal role="dialog">
       <div ref={modalRef}>
         <h1>Modal de Criar Projeto</h1>
         <img
           src={CloseButtonBlack} 
           ref={buttonRef} 
-          onClick={() => setIsOpen(false)}
+          onClick={() => setOpenAddModal(false)}
         />
+        <ModalForm>
+          <StyledButton 
+            color="solid-green" 
+            widthsize="large1" 
+            onClick={() => handleCreateProject}>
+              Criar Projeto
+            </StyledButton> 
+        </ModalForm>
       </div>
-    </div>
+    </StyledModal>
   );
 };

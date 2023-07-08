@@ -6,9 +6,11 @@ import { useContext, useState } from "react";
 import { ProjectsContext } from "../../../providers/ProjectsContext/ProjectsContext";
 import { ImagesContainer, StyledProjectCard } from "./styles";
 
-export const ProjectCard = () => {
-  const [isOpenEdit, setIsOpenEdit] = useState(false);
+interface EditProjectModalProps {
+  setOpenEditModal: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
+export const ProjectCard = ({ setOpenEditModal }: EditProjectModalProps) => {
   const isDashboardProjects = window.location.pathname.includes(
     "/dashboard/projects"
   );
@@ -41,7 +43,7 @@ export const ProjectCard = () => {
                   src={Edit}
                   alt="Ícone de um lápis na cor verde que simboliza um botão para editar o projeto"
                   onClick={() => {
-                    setIsOpenEdit(true);
+                    setOpenEditModal(true);
                   }}
                 />
                 <img
