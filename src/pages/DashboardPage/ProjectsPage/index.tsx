@@ -26,6 +26,7 @@ export const ProjectsPage = () => {
   const [openEditModal, setOpenEditModal] = useState(false);
 
   const{ isPortfolioId } = useContext(PortfolioContext);
+  
 
   return (
     <Container>
