@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const AddFormSchema = z.object({
+export const EditFormSchema = z.object({
   name: z
     .string()
     .nonempty("O nome do projeto é obrigatório.")
@@ -15,4 +15,4 @@ export const AddFormSchema = z.object({
   coverUrl: z.string().optional(),
 });
 
-export type TAddForm = z.infer<typeof AddFormSchema>;
+export type TEditForm = z.infer<typeof EditFormSchema>;

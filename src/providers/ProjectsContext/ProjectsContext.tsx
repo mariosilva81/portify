@@ -4,7 +4,7 @@ import { api } from "../../services/api";
 import { toast } from "react-toastify";
 import { AxiosError } from "axios";
 import { TAddForm } from "../../pages/DashboardPage/ProjectsPage/components/AddProjectModal/components/AddForm/schema";
-import { TEditForm } from "../../pages/DashboardPage/ProjectsPage/components/EditProjectModal/schema";
+import { TEditForm } from "../../pages/DashboardPage/ProjectsPage/components/EditProjectModal/components/EditForm/schema";
 import { UserContext } from "../UserContext/UserContext";
 import { PortfolioContext } from "../PortfolioContext/PortfolioContext";
 
@@ -15,6 +15,7 @@ export const ProjectsProvider = ({ children }: IProjectsProviderProps) => {
   const { isPortfolioId } = useContext(PortfolioContext);
 
   const [projectList, setProjectList] = useState<IProject[]>([]);
+  const [ selectedProjectId, setSelectedProjectId ] = useState<number | undefined>();
 
   const createProject = async (formData: TAddForm, isPortfolioId: number) => {
     const token = localStorage.getItem("@TOKEN");
@@ -39,10 +40,9 @@ export const ProjectsProvider = ({ children }: IProjectsProviderProps) => {
 
   const editProject = async (formData: TEditForm, idProject: number) => {
     const token = localStorage.getItem("@TOKEN");
-    const { img, description, ...formRequest } = formData;
     try {
       setLoading(true);
-      const { data } = await api.put(`/projects/${idProject}`, formRequest, {
+      const { data } = await api.put(`/projects/${idProject}`, formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const index = projectList.findIndex(
@@ -108,6 +108,7 @@ export const ProjectsProvider = ({ children }: IProjectsProviderProps) => {
         createProject,
         editProject,
         deleteProject,
+        setSelectedProjectId,
       }}
     >
       {children}
