@@ -1,18 +1,19 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 
-export const FooterStyled = styled.footer`
+export const StyledFooter = styled.footer`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
 
+  gap: 2rem;
   width: 100%;
-  height: 8rem;
 
   padding-left: 15%;
   padding-right: 15%;
 
-  max-width: 3000px;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 
   background-color: var(--color-light-gray);
   
@@ -23,20 +24,18 @@ export const FooterStyled = styled.footer`
     color: var(--color-black);
   }
 
-  p{
+  p {
     font-size: 1rem;
     font-family: var(--font-family-secondary);
 
     text-align: center;
-    max-width: 250px;
+    max-width: 400px;
 
     color: var(--color-black);
   }
 
-  @media(min-width: 620px) {
-    /* padding: var(--padding-default); */
-
-    justify-content: space-between;
+  @media (max-width: 696px) {
+    justify-content: center;
 
     p {
       max-width: 400px;
