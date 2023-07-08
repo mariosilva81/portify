@@ -29,7 +29,7 @@ export const NavBar = () => {
             src={home}
             alt="ícone com desenho de uma casa, exibe a tela de inicio da dashboard"
           />
-          <figcaption>Início</figcaption>
+          <figcaption>início</figcaption>
         </figure>
       </Link>
       <Link to="/dashboard/profile">
