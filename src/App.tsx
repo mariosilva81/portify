@@ -22,11 +22,11 @@ export const App = () => {
         <ResetStyles />
         <GlobalStyles />
         <UserProvider>
-          <ProjectsProvider>
-            <PortfolioProvider>
+          <PortfolioProvider>
+            <ProjectsProvider>
               <RoutesMain />
-            </PortfolioProvider>
-          </ProjectsProvider>
+            </ProjectsProvider>
+          </PortfolioProvider>
         </UserProvider>
         <ToastContainer
           position="top-right"

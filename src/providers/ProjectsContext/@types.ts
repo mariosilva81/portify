@@ -7,10 +7,12 @@ export interface IProjectsProviderProps {
 
 export interface IProject {
   portfolioId: number;
+  id?: number;
   name: string;
+  description: string;
   repository: string;
-  link: string;
-  id: number;
+  link?: string;
+  img?: string;
 }
 
 export interface IProjectsContext {

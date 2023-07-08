@@ -9,8 +9,8 @@ export const StyledHeaderButton = styled.div`
   h3 {
     color: var(--color-white);
     font-family: var(--font-family-secondary);
-    font-weight: var(--font-weight-1);
     font-size: var(--font-size-2);
+    font-weight: var(--font-weight-1);
   }
 `;
 
@@ -51,10 +51,10 @@ export const StyledMain = styled.main`
 
     padding: 4rem;
     gap: 1.5625rem;
-    
+
     a {
       cursor: pointer;
-      
+
       color: var(--color-primary);
       font-size: clamp(1rem, 4vw, 1.75rem);
       font-weight: var(--font-weight-2);
