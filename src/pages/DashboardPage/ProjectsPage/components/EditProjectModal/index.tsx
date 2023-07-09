@@ -1,16 +1,13 @@
-import { RefObject, useEffect } from "react";
+import { RefObject, useContext, useEffect } from "react";
 import { useOutsideClick } from "../../../../../hooks/useOutsideClick";
 import CloseButtonBlack from "../../../../../assets/icons/close-black.png";
 import { StyledModal } from "../../../../../styles/modalStyles";
 import { EditForm } from './components/EditForm';
+import { ProjectsContext } from '../../../../../providers/ProjectsContext/ProjectsContext';
 
-interface EditProjectModalProps {
-  setOpenEditModal: React.Dispatch<React.SetStateAction<boolean>>;
-}
+export const EditProjectModal = () => {
+  const { setOpenEditModal } = useContext(ProjectsContext);
 
-export const EditProjectModal = ({
-  setOpenEditModal
-}: EditProjectModalProps) => {
   const modalRef: RefObject<HTMLDivElement> = useOutsideClick({
     callback: () => {
       setOpenEditModal(false);

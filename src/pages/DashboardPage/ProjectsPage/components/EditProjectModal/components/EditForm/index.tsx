@@ -11,8 +11,8 @@ interface EditFormProps {
   setOpenEditModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const EditForm: React.FC<EditFormProps> = ({ setOpenEditModal }) => {
-  const { editProject, selectedProject } = useContext(ProjectsContext);
+export const EditForm: React.FC<EditFormProps> = () => {
+  const { editProject, selectedProject, setOpenEditModal } = useContext(ProjectsContext);
 
   const {
     reset,
@@ -62,7 +62,7 @@ export const EditForm: React.FC<EditFormProps> = ({ setOpenEditModal }) => {
       <Input type="text" id="link" {...register("link")} />
 
       <label htmlFor="img">URL da imagem (opcional)</label>
-      <Input type="text" id="img" {...register("coverUrl")} />
+      <Input type="text" id="coverUrl" {...register("coverUrl")} />
 
       <StyledButton color="solid-green" widthsize="large1" type="submit">
         Editar Projeto

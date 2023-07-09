@@ -14,6 +14,7 @@ export const ProjectsProvider = ({ children }: IProjectsProviderProps) => {
   const { setLoading } = useContext(UserContext);
   const { isPortfolioId } = useContext(PortfolioContext);
 
+  const [openEditModal, setOpenEditModal] = useState(false);
   const [projectList, setProjectList] = useState<IProject[]>([]);
   const [ selectedProject, setSelectedProject ] = useState<IProject>();
 
@@ -108,6 +109,8 @@ export const ProjectsProvider = ({ children }: IProjectsProviderProps) => {
         deleteProject,
         setSelectedProject,
         selectedProject,
+        setOpenEditModal,
+        openEditModal
       }}
     >
       {children}

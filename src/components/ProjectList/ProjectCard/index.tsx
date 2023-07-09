@@ -6,18 +6,18 @@ import { useContext } from "react";
 import { ProjectsContext } from "../../../providers/ProjectsContext/ProjectsContext";
 import { ImagesContainer, StyledProjectCard } from "./styles";
 
-interface EditProjectModalProps {
-  setOpenEditModal: React.Dispatch<React.SetStateAction<boolean>>;
-}
+// interface EditProjectModalProps {
+//   setOpenEditModal: React.Dispatch<React.SetStateAction<boolean>>;
+// }
 
-export const ProjectCard = ({ setOpenEditModal }: EditProjectModalProps) => {
+export const ProjectCard = () => {
   const { setSelectedProject } = useContext(ProjectsContext);
 
   const isDashboardProjects = window.location.pathname.includes(
     "/dashboard/projects"
   );
 
-  const { deleteProject, projectList } = useContext(ProjectsContext);
+  const { deleteProject, projectList, setOpenEditModal } = useContext(ProjectsContext);
 
   const handleDelete = (projectID: number | undefined) => {
     if (typeof projectID === "number") {

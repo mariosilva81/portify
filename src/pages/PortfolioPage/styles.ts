@@ -40,7 +40,7 @@ export const UserContainer = styled.div`
   color: ${(props) => props.theme.colors.text};
 
   p {
-    /* color: var(--color-black); */
+    color: var(--color-black);
 
     font-size: var(--font-size-3);
 
@@ -86,6 +86,6 @@ export const SectionStyled = styled.section`
 
   > h1 {
     font-size: 36px;
-
+    
   }
 `;

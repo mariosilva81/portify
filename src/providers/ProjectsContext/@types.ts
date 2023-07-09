@@ -18,8 +18,10 @@ export interface IProject {
 
 export interface IProjectsContext {
   projectList: IProject[];
-  selectedProject: IProject;
-  setSelectedProject: React.Dispatch<React.SetStateAction<IProject>>;
+  selectedProject: IProject | undefined;
+  openEditModal: boolean;
+  setOpenEditModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setSelectedProject: React.Dispatch<React.SetStateAction<IProject | undefined>>;
   setProjectList: React.Dispatch<React.SetStateAction<IProject[]>>;
   createProject: (formData: TAddForm, isPortfolioId: number) => Promise<void>;
   deleteProject: (projectID: number) => Promise<void>;

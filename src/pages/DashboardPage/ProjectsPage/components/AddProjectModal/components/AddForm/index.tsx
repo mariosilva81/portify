@@ -58,7 +58,7 @@ export const AddForm: React.FC<AddFormProps> = ({ isPortfolioId, setOpenAddModal
       <Input type="text" id="link" {...register("link")} />
 
       <label htmlFor="img">URL da imagem (opcional)</label>
-      <Input type="text" id="img" {...register("coverUrl")} />
+      <Input type="text" id="coverUrl" {...register("coverUrl")} />
 
       <StyledButton color="solid-green" widthsize="large1" type="submit">
         Criar Projeto

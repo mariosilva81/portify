@@ -21,11 +21,9 @@ import { PortfolioContext } from "../../../providers/PortfolioContext/PortfolioC
 
 export const ProjectsPage = () => {
   const { user, userLogout } = useContext(UserContext);
-  const { projectList } = useContext(ProjectsContext);
-  const [openAddModal, setOpenAddModal] = useState(false);
-  const [openEditModal, setOpenEditModal] = useState(false);
-
+  const { projectList, openEditModal } = useContext(ProjectsContext);
   const { isPortfolioId } = useContext(PortfolioContext);
+  const [openAddModal, setOpenAddModal] = useState(false);
 
   return (
     <Container>
@@ -57,11 +55,11 @@ export const ProjectsPage = () => {
           </TittleAndButtonContainer>
           <ProjectList>
             {projectList?.length !== 0 ? (
-              <ProjectCard setOpenEditModal={setOpenEditModal} />
+              <ProjectCard />
             ) : (
               <div className="any-project">
                 <h3>
-                  Nenhum projeto cadastrado cadastre no botão.
+                  Nenhum projeto cadastrado.
                 </h3>
               </div>
             )}
@@ -75,7 +73,7 @@ export const ProjectsPage = () => {
         />
       )}
       {openEditModal && (
-        <EditProjectModal setOpenEditModal={setOpenEditModal} />
+        <EditProjectModal />
       )}
       <Footer />
     </Container>

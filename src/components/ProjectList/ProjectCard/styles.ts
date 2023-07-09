@@ -29,8 +29,11 @@ export const StyledProjectCard = styled.li`
     display: flex;
     flex-direction: column;
     gap: 1rem;
-
     max-width: 300px;
+
+    h1 {
+      color: var(--color-black);
+    }
   }
 
   @media (min-width: 800px) {
