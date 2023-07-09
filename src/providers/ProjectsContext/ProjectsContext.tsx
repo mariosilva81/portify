@@ -15,7 +15,7 @@ export const ProjectsProvider = ({ children }: IProjectsProviderProps) => {
   const { isPortfolioId } = useContext(PortfolioContext);
 
   const [projectList, setProjectList] = useState<IProject[]>([]);
-  const [ selectedProjectId, setSelectedProjectId ] = useState<number | undefined>();
+  const [ selectedProject, setSelectedProject ] = useState<IProject>();
 
   const createProject = async (formData: TAddForm, isPortfolioId: number) => {
     const token = localStorage.getItem("@TOKEN");
@@ -36,7 +36,7 @@ export const ProjectsProvider = ({ children }: IProjectsProviderProps) => {
     }
   };
 
-  const editProject = async (formData: TEditForm, idProject: number | undefined) => {
+  const editProject = async (formData: TEditForm, idProject: number) => {
     const token = localStorage.getItem("@TOKEN");
     try {
       setLoading(true);
@@ -50,6 +50,7 @@ export const ProjectsProvider = ({ children }: IProjectsProviderProps) => {
         const updateProjectList = [...projectList];
         updateProjectList[index] = data;
         setProjectList(updateProjectList);  
+        toast.success("Projeto editado com sucesso.")
       }
     } catch (error: AxiosError | any) {
       console.error(error.message);
@@ -105,8 +106,8 @@ export const ProjectsProvider = ({ children }: IProjectsProviderProps) => {
         createProject,
         editProject,
         deleteProject,
-        setSelectedProjectId,
-        selectedProjectId,
+        setSelectedProject,
+        selectedProject,
       }}
     >
       {children}

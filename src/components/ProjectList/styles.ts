@@ -6,7 +6,18 @@ export const StyledProjectList = styled.ul`
   justify-content: flex-start;
   gap: 2rem;
 
+  .any-project {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+  }
+
+  .any-project h3 {
+    text-align: center;
+  }
+
   @media (min-width: 800px) {
-    gap: 3rem;
+    gap: 2rem;
   }
 `;

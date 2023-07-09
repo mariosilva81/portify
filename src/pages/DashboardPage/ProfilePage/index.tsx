@@ -11,7 +11,9 @@ import {
   StyledContainerMain,
   StyledContainerUserData,
 } from "./styles";
-import { NavBar } from '../../../components/NavBar';
+import { NavBar } from "../../../components/NavBar";
+import { PageWrapper } from "../../PortfolioPage/styles";
+import { StyledMain } from "../styles";
 
 export const ProfilePage = () => {
   const [hasPortfolio, setHasPortfolio] = useState<boolean>(false);
@@ -30,37 +32,42 @@ export const ProfilePage = () => {
 
   return (
     <>
-      <Header>
-        <StyledContainerHeader>
-          <span>{user?.name}</span>
+      <PageWrapper>
+        <Header>
+          <StyledContainerHeader>
+            <span>{user?.name}</span>
 
-          <Button
-            name="Sair"
-            type="button"
-            widthsize="small"
-            color="outline-black"
-            onClick={userLogout}
-          />
-        </StyledContainerHeader>
-      </Header>
+            <Button
+              name="Sair"
+              type="button"
+              widthsize="small"
+              color="outline-black"
+              onClick={userLogout}
+            />
+          </StyledContainerHeader>
+        </Header>
+        <StyledMain>
+          <NavBar />
+          <StyledContainerMain>
+            <h1>Informações no perfil:</h1>
 
-      <main>
-        <NavBar />
-        <StyledContainerMain>
-          <h1>Informações no perfil:</h1>
+            <StyledContainerUserData>
+              <small>
+                <strong>Nome:</strong>
+                {user?.name}
+              </small>
+              <small>
+                <strong>Email:</strong>
+                {user?.email}
+              </small>
+            </StyledContainerUserData>
 
-          <StyledContainerUserData>
-            <small><strong>Nome:</strong>{user?.name}</small>
-            <small><strong>Email:</strong>{user?.email}</small>
-          </StyledContainerUserData>
+            {hasPortfolio ? <EditProfileForm /> : <CreateProfileForm />}
+          </StyledContainerMain>
+        </StyledMain>
 
-          {hasPortfolio 
-          ? <EditProfileForm />
-          : <CreateProfileForm />}
-        </StyledContainerMain>
-      </main>
-
-      <Footer />
+        <Footer />
+      </PageWrapper>
     </>
   );
 };

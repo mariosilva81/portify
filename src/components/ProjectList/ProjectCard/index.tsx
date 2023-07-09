@@ -11,7 +11,7 @@ interface EditProjectModalProps {
 }
 
 export const ProjectCard = ({ setOpenEditModal }: EditProjectModalProps) => {
-  const { setSelectedProjectId } = useContext(ProjectsContext);
+  const { setSelectedProject } = useContext(ProjectsContext);
 
   const isDashboardProjects = window.location.pathname.includes(
     "/dashboard/projects"
@@ -29,39 +29,73 @@ export const ProjectCard = ({ setOpenEditModal }: EditProjectModalProps) => {
     <>
       {projectList.map((project) => {
         if (isDashboardProjects) {
-          return (
-            <StyledProjectCard key={project.id}>
-              <div className="title-container">
-                <img className="img-project" src={project?.coverUrl} />
-                <h1>{project.name}</h1>
-                <p>{project.description}</p>
-              </div>
-              <ImagesContainer>
-                <img
-                  src={Edit}
-                  alt="Ícone de um lápis na cor verde que simboliza um botão para editar o projeto"
-                  onClick={() => {
-                    setSelectedProjectId(project.id);
-                    setOpenEditModal(true);
-                  }}
-                />
-                <img
-                  src={Delete}
-                  alt="Ícone de uma lixeira na cor verde que simboliza um botão para excluir o projeto"
-                  onClick={() => {
-                    handleDelete(project.id);
-                  }}
-                />
-              </ImagesContainer>
-            </StyledProjectCard>
-          );
+          if (project.coverUrl == "") {
+            return (
+              <StyledProjectCard key={project.id}>
+                <div className="title-container">
+                  <h1>{project.name}</h1>
+                  <p>{project.description}</p>
+                </div>
+                <ImagesContainer>
+                  <img
+                    src={Edit}
+                    alt="Ícone de um lápis na cor verde que simboliza um botão para editar o projeto"
+                    onClick={() => {
+                      setSelectedProject(project);
+                      setOpenEditModal(true);
+                    }}
+                  />
+                  <img
+                    src={Delete}
+                    alt="Ícone de uma lixeira na cor verde que simboliza um botão para excluir o projeto"
+                    onClick={() => {
+                      handleDelete(project.id);
+                    }}
+                  />
+                </ImagesContainer>
+              </StyledProjectCard>
+            );
+          } else {
+            return (
+              <StyledProjectCard key={project.id}>
+                <div className="img-container">
+                  <img className="img-project" src={project.coverUrl} />
+                  <div className="title-container">
+                    <h1>{project.name}</h1>
+                    <p>{project.description}</p>
+                  </div>
+                </div>
+                <ImagesContainer>
+                  <img
+                    src={Edit}
+                    alt="Ícone de um lápis na cor verde que simboliza um botão para editar o projeto"
+                    onClick={() => {
+                      setSelectedProject(project);
+                      setOpenEditModal(true);
+                    }}
+                  />
+                  <img
+                    src={Delete}
+                    alt="Ícone de uma lixeira na cor verde que simboliza um botão para excluir o projeto"
+                    onClick={() => {
+                      handleDelete(project.id);
+                    }}
+                  />
+                </ImagesContainer>
+              </StyledProjectCard>
+            );
+          }
         } else {
           return (
             <StyledProjectCard key={project.id}>
-              <div className="title-container">
-                <img className="img-project" src={project?.coverUrl} />
-                <h1>{project.name}</h1>
-                <p>{project.description}</p>
+              <div className="img-container">
+                {project.coverUrl !== "" && (
+                  <img className="img-project" src={project.coverUrl} />
+                )}
+                <div className="title-container">
+                  <h1>{project.name}</h1>
+                  <p>{project.description}</p>
+                </div>
               </div>
               <ImagesContainer>
                 <a href={project.repository} target="_blank">
@@ -69,7 +103,7 @@ export const ProjectCard = ({ setOpenEditModal }: EditProjectModalProps) => {
                     src={Git}
                     alt="Ícone do GitHub na cor verde que simboliza um botão para visualizar o projeto"
                   />
-                </a>  
+                </a>
                 <a href={project.link} target="_blank">
                   <img
                     src={Link}

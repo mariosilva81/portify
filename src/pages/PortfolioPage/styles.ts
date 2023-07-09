@@ -59,15 +59,13 @@ export const UserInfoContainer = styled.div`
 
   h2 {
     font-size: 40px;
-
-    /* color: var(--color-black); */
   }
 
   p {
     font-size: var(--font-size-3);
     font-weight: 700;
 
-    /* color: var(--color-primary); */
+    color: var(--color-primary);
   }
 
   @media (min-width: 800px) {
@@ -86,9 +84,8 @@ export const SectionStyled = styled.section`
   margin-top: 5rem;
   margin-bottom: 2rem;
 
-  h1 {
+  > h1 {
     font-size: 36px;
 
-    /* color: var(--color-black); */
   }
 `;

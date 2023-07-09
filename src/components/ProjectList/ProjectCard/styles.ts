@@ -3,12 +3,19 @@ import { styled } from "styled-components";
 export const StyledProjectCard = styled.li`
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
   width: 100%;
+  gap: 1rem;
 
   h1 {
     font-size: var(--font-size-5);
     color: var(--color-black);
+  }
+
+  .img-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
   }
 
   .img-project {
@@ -22,6 +29,8 @@ export const StyledProjectCard = styled.li`
     display: flex;
     flex-direction: column;
     gap: 1rem;
+
+    max-width: 300px;
   }
 
   @media (min-width: 800px) {
@@ -37,7 +46,7 @@ export const ImagesContainer = styled.div`
   align-items: center;
   gap: 1rem;
 
-  img{
-    cursor:pointer;
+  img {
+    cursor: pointer;
   }
 `;

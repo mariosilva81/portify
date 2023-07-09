@@ -57,10 +57,12 @@ export const StyledContainerUserData = styled.div`
 
 export const StyledProfileForm = styled.form`
   width: 100%;
+  min-width: 250px;
   gap: 1rem;
 
   display: flex;
   flex-direction: column;
+
 
   input {
     margin-top: 16px;

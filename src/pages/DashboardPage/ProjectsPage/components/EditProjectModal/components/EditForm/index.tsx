@@ -2,7 +2,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { Input } from "../../../../../../../components/Input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { TEditForm, EditFormSchema } from "./schema";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ProjectsContext } from "../../../../../../../providers/ProjectsContext/ProjectsContext";
 import { StyledButton } from "../../../../../../../components/Button/styles";
 import { StyledEditForm } from "./styles";
@@ -12,7 +12,7 @@ interface EditFormProps {
 }
 
 export const EditForm: React.FC<EditFormProps> = ({ setOpenEditModal }) => {
-  const { editProject, selectedProjectId } = useContext(ProjectsContext);
+  const { editProject, selectedProject } = useContext(ProjectsContext);
 
   const {
     reset,
@@ -24,12 +24,25 @@ export const EditForm: React.FC<EditFormProps> = ({ setOpenEditModal }) => {
   });
 
   const submit: SubmitHandler<TEditForm> = (formData) => {
-    if (selectedProjectId !== null) {
-      editProject(formData, selectedProjectId)
+    const projectId = selectedProject.id!;
+    if (projectId !== null && projectId !== undefined) {
+      editProject(formData, projectId);
       setOpenEditModal(false);
       reset();
     }
   };
+
+  useEffect(() => {
+    if (selectedProject) {
+      reset({
+        name: selectedProject.name,
+        description: selectedProject.description,
+        repository: selectedProject.repository,
+        link: selectedProject.link,
+        coverUrl: selectedProject.coverUrl,
+      });
+    }
+  }, [selectedProject, reset]);
 
   return (
     <StyledEditForm onSubmit={handleSubmit(submit)}>
@@ -52,7 +65,7 @@ export const EditForm: React.FC<EditFormProps> = ({ setOpenEditModal }) => {
       <Input type="text" id="img" {...register("coverUrl")} />
 
       <StyledButton color="solid-green" widthsize="large1" type="submit">
-        Criar Projeto
+        Editar Projeto
       </StyledButton>
     </StyledEditForm>
   );

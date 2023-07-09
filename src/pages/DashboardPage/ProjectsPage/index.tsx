@@ -14,9 +14,9 @@ import {
 import { ProjectList } from "../../../components/ProjectList";
 import { ProjectCard } from "../../../components/ProjectList/ProjectCard";
 import { ProjectsContext } from "../../../providers/ProjectsContext/ProjectsContext";
-import { NavBar } from '../../../components/NavBar';
-import { AddProjectModal } from './components/AddProjectModal';
-import { EditProjectModal } from './components/EditProjectModal';
+import { NavBar } from "../../../components/NavBar";
+import { AddProjectModal } from "./components/AddProjectModal";
+import { EditProjectModal } from "./components/EditProjectModal";
 import { PortfolioContext } from "../../../providers/PortfolioContext/PortfolioContext";
 
 export const ProjectsPage = () => {
@@ -25,8 +25,7 @@ export const ProjectsPage = () => {
   const [openAddModal, setOpenAddModal] = useState(false);
   const [openEditModal, setOpenEditModal] = useState(false);
 
-  const{ isPortfolioId } = useContext(PortfolioContext);
-  
+  const { isPortfolioId } = useContext(PortfolioContext);
 
   return (
     <Container>
@@ -38,31 +37,46 @@ export const ProjectsPage = () => {
             widthsize="small"
             onClick={() => userLogout()}
           >
-             Sair
+            Sair
           </StyledButton>
         </NameButtonContainer>
       </Header>
       <ContentWrapper>
-      <NavBar/>
+        <NavBar />
         <SectionStyled>
           <TittleAndButtonContainer>
             <h2>Meus Projetos</h2>
-            <StyledButton color="solid-green" widthsize="large1" onClick={() => setOpenAddModal(true)}>
+            <StyledButton
+              color="solid-green"
+              widthsize="large1"
+              onClick={() => setOpenAddModal(true)}
+            >
               <img src={AddCircle} alt="Ícone de adição na cor branca" />
               Adicionar Projeto
             </StyledButton>
           </TittleAndButtonContainer>
           <ProjectList>
             {projectList?.length !== 0 ? (
-              <ProjectCard setOpenEditModal={setOpenEditModal}/>
+              <ProjectCard setOpenEditModal={setOpenEditModal} />
             ) : (
-              <h3>Nenhum projeto cadastrado</h3>
+              <div className="any-project">
+                <h3>
+                  Nenhum projeto cadastrado cadastre no botão.
+                </h3>
+              </div>
             )}
           </ProjectList>
         </SectionStyled>
       </ContentWrapper>
-      {openAddModal && <AddProjectModal setOpenAddModal={setOpenAddModal} isPortfolioId={isPortfolioId} />}
-      {openEditModal && <EditProjectModal setOpenEditModal={setOpenEditModal} />}
+      {openAddModal && (
+        <AddProjectModal
+          setOpenAddModal={setOpenAddModal}
+          isPortfolioId={isPortfolioId}
+        />
+      )}
+      {openEditModal && (
+        <EditProjectModal setOpenEditModal={setOpenEditModal} />
+      )}
       <Footer />
     </Container>
   );
