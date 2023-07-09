@@ -9,10 +9,7 @@ interface AddProjectModalProps {
   isPortfolioId: number | null;
 }
 
-export const AddProjectModal = ({
-  setOpenAddModal,
-  isPortfolioId,
-}: AddProjectModalProps) => {
+export const AddProjectModal = ({ setOpenAddModal, isPortfolioId, }: AddProjectModalProps) => {
   const modalRef: RefObject<HTMLDivElement> = useOutsideClick({
     callback: () => {
       setOpenAddModal(false);

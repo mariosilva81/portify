@@ -1,5 +1,6 @@
 import React from "react";
 import { TAddForm } from "../../pages/DashboardPage/ProjectsPage/components/AddProjectModal/components/AddForm/schema";
+import { TEditForm } from '../../pages/DashboardPage/ProjectsPage/components/EditProjectModal/components/EditForm/schema';
 
 export interface IProjectsProviderProps {
   children: React.ReactNode;
@@ -18,8 +19,8 @@ export interface IProject {
 export interface IProjectsContext {
   projectList: IProject[];
   setProjectList: React.Dispatch<React.SetStateAction<IProject[]>>;
-  createProject: (formData: TAddForm, userID: number) => Promise<void>;
+  createProject: (formData: TAddForm, isPortfolioId: number) => Promise<void>;
   deleteProject: (projectID: number) => Promise<void>;
-  editProject: (formData: TAddForm, idProject: number) => Promise<void>;
+  editProject: (formData: TEditForm, idProject: number) => Promise<void>;
   setSelectedProjectId: React.Dispatch<React.SetStateAction<number | undefined>>;
 }

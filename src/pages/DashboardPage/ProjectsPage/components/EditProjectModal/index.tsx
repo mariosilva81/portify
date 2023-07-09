@@ -2,6 +2,7 @@ import { RefObject, useEffect } from "react";
 import { useOutsideClick } from "../../../../../hooks/useOutsideClick";
 import CloseButtonBlack from "../../../../../assets/icons/close-black.png";
 import { StyledModal } from "../../../../../styles/modalStyles";
+import { EditForm } from './components/EditForm';
 
 interface EditProjectModalProps {
   setOpenEditModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -30,18 +31,17 @@ export const EditProjectModal = ({
     };
   }, [setOpenEditModal]);
 
-  // return (
-  //   <StyledModal role="dialog">
-  //     <div ref={modalRef}>
-  //       <div className="title-container">
-  //         <h1>Editar Projeto</h1>
-  //         <img src={CloseButtonBlack} onClick={() => setOpenEditModal(false)} />
-  //       </div>
-  //       <EditForm
-  //         isPortfolioId={isPortfolioId}
-  //         setOpenEditModal={setOpenEditModal}
-  //       />
-  //     </div>
-  //   </StyledModal>
-  // );
+  return (
+    <StyledModal role="dialog">
+      <div ref={modalRef}>
+        <div className="title-container">
+          <h1>Editar Projeto</h1>
+          <img src={CloseButtonBlack} onClick={() => setOpenEditModal(false)} />
+        </div>
+        <EditForm
+          setOpenEditModal={setOpenEditModal}
+        />
+      </div>
+    </StyledModal>
+  );
 };

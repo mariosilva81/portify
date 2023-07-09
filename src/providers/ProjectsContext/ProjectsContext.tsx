@@ -22,13 +22,11 @@ export const ProjectsProvider = ({ children }: IProjectsProviderProps) => {
 
     try {
       setLoading(true);
-      const { data } = await api.post(
-        "/projects",
-        { formData, isPortfolioId },
-        {
+      const { data } = await api.post("/projects", formData, {
           headers: { Authorization: `Bearer ${token}` },
+          params: { isPortfolioId },
         }
-      );
+    );
       setProjectList((projectList) => [...projectList, data]);
       toast.success("Projeto criado com sucesso.");
     } catch (error: AxiosError | any) {
@@ -83,8 +81,7 @@ export const ProjectsProvider = ({ children }: IProjectsProviderProps) => {
 
       if (portfolioId) {
         try {
-          const { data } = await api.get(
-            `/portfolios/${portfolioId}/projects/`,
+          const { data } = await api.get(`/portfolios/${portfolioId}/projects/`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -92,6 +89,8 @@ export const ProjectsProvider = ({ children }: IProjectsProviderProps) => {
             }
           );
           setProjectList(data);
+          console.log(data);
+          
         } catch (error: AxiosError | any) {
           console.error(error);
         }

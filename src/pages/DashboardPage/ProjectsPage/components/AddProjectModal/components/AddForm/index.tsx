@@ -26,12 +26,20 @@ export const AddForm: React.FC<AddFormProps> = ({ isPortfolioId, setOpenAddModal
 
   const submit: SubmitHandler<TAddForm> = (formData) => {
     if (isPortfolioId !== null) {
-      createProject(formData, isPortfolioId);
+      const requestData = {
+        portfolioId: isPortfolioId,
+        name: formData.name,
+        description: formData.description,
+        repository: formData.repository,
+        link: formData.link,
+        coverUrl: formData.coverUrl,
+      };
+      createProject(requestData, isPortfolioId);
       setOpenAddModal(false);
       reset();
     }
   };
-
+  
   return (
     <StyledAddForm onSubmit={handleSubmit(submit)}>
       <label htmlFor="name">Nome</label>
@@ -47,10 +55,10 @@ export const AddForm: React.FC<AddFormProps> = ({ isPortfolioId, setOpenAddModal
       {errors.repository?.message && <p>{errors.repository.message}</p>}
 
       <label htmlFor="link">Link do deploy (opcional)</label>
-      <Input type="url" id="link" {...register("link")} />
+      <Input type="text" id="link" {...register("link")} />
 
       <label htmlFor="img">URL da imagem (opcional)</label>
-      <Input type="url" id="img" {...register("img")} />
+      <Input type="text" id="img" {...register("coverUrl")} />
 
       <StyledButton color="solid-green" widthsize="large1" type="submit">
         Criar Projeto

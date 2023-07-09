@@ -23,13 +23,13 @@ export const EditForm: React.FC<EditFormProps> = ({ setOpenEditModal }) => {
     resolver: zodResolver(EditFormSchema),
   });
 
-  // const submit: SubmitHandler<TEditForm> = (formData) => {
-  //   if (projectId !== null) {
-  //     editProject(formData, projectId)
-  //     setOpenEditModal(false);
-  //     reset();
-  //   }
-  // };
+  const submit: SubmitHandler<TEditForm> = (formData) => {
+    if (projectId !== null) {
+      editProject(formData, projectId)
+      setOpenEditModal(false);
+      reset();
+    }
+  };
 
   return (
     <StyledEditForm onSubmit={handleSubmit(submit)}>
@@ -49,7 +49,7 @@ export const EditForm: React.FC<EditFormProps> = ({ setOpenEditModal }) => {
       <Input type="url" id="link" {...register("link")} />
 
       <label htmlFor="img">URL da imagem (opcional)</label>
-      <Input type="url" id="img" {...register("img")} />
+      <Input type="url" id="img" {...register("coverUrl")} />
 
       <StyledButton color="solid-green" widthsize="large1" type="submit">
         Criar Projeto

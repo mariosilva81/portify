@@ -57,12 +57,19 @@ export const ProjectCard = ({ setOpenEditModal }: EditProjectModalProps) => {
         } else {
           return (
             <StyledProjectCard key={project.id}>
+              <div className="title-container">
+                <img className="img-project" src={project?.coverUrl} />
+                <h1>{project.name}</h1>
+                <p>{project.description}</p>
+              </div>
               <ImagesContainer>
-                <img
-                  src={Git}
-                  alt="Ícone do GitHub na cor verde que simboliza um botão para visualizar o projeto"
-                />
-                <a target="_blank">
+                <a href={project.repository} target="_blank">
+                  <img
+                    src={Git}
+                    alt="Ícone do GitHub na cor verde que simboliza um botão para visualizar o projeto"
+                  />
+                </a>  
+                <a href={project.link} target="_blank">
                   <img
                     src={Link}
                     alt="Ícone de um link na cor verde que simboliza um botão para acessar o projeto"
