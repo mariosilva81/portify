@@ -18,6 +18,7 @@ export interface IProject {
 
 export interface IProjectsContext {
   projectList: IProject[];
+  selectedProjectId: number | undefined;
   setProjectList: React.Dispatch<React.SetStateAction<IProject[]>>;
   createProject: (formData: TAddForm, isPortfolioId: number) => Promise<void>;
   deleteProject: (projectID: number) => Promise<void>;

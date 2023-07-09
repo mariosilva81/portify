@@ -84,6 +84,7 @@ export const PortfolioProvider = ({ children }: IPortfolioProviderProps) => {
 
         if (data.length !== 0) {
           setIsPortfolioId(data[0].id);
+          setPortfolio(data[0]);
           return true;
         } else {
           return false;
