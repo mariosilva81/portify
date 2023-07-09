@@ -30,30 +30,29 @@ export const StyledContainerAlongside = styled.div`
 
   display: flex;
   flex-direction: column;
-
-  `;
+`;
 
 export const StyledContainerHeading = styled.div`
   gap: 1.5rem;
   width: 100%;
   max-width: 360px;
-  
+
   display: flex;
   flex-direction: column;
-  
+
   h1 {
     font-family: var(--font-family-primary);
     font-weight: var(--font-weight-2);
     font-size: clamp(1.75rem, 4vw, 2.75rem);
   }
-  
+
   p {
     font-family: var(--font-family-secondary);
     font-weight: var(--font-weight-1);
     font-size: clamp(0.75rem, 4vw, 1rem);
     color: #00000080;
 
-    margin-top: .75rem;
+    margin-top: 0.75rem;
   }
 
   img {

@@ -18,7 +18,6 @@ export const StyledNavBar = styled.nav`
     }
 
     figcaption {
-      /* font-family: --font-family-primary; */
       font-size: 1.125rem;
       font-weight: 700;
       color: #0f1411;

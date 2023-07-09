@@ -40,7 +40,7 @@ export const UserContainer = styled.div`
   color: ${(props) => props.theme.colors.text};
 
   p {
-    color: var(--color-black);
+    color: ${(props) => props.theme.colors.text};
 
     font-size: var(--font-size-3);
 
@@ -64,7 +64,6 @@ export const UserInfoContainer = styled.div`
   p {
     font-size: var(--font-size-3);
     font-weight: 700;
-
     color: var(--color-primary);
   }
 
@@ -85,7 +84,16 @@ export const SectionStyled = styled.section`
   margin-bottom: 2rem;
 
   > h1 {
-    font-size: 36px;
-    
+    font-size: clamp(2rem, 4vw, 2.25rem);
+    margin-bottom: 1rem;
+
+    @media (max-width: 798px) {
+      align-self: center;
+    }
+  }
+
+  ul {
+    gap: 4rem;
+    margin-bottom: 3rem;
   }
 `;
