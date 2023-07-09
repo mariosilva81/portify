@@ -30,7 +30,7 @@ export const StyledContainerMain = styled.div`
     font-family: var(--font-family-primary);
     font-weight: var(--font-weight-2);
     font-size: clamp(1.75rem, 4vw, 2.25rem);
-    
+
     align-self: center;
   }
 `;
@@ -51,7 +51,7 @@ export const StyledContainerUserData = styled.div`
     font-family: var(--font-family-secondary);
     font-weight: var(--font-weight-1);
     font-size: var(--font-size-1);
-    color: #0F1411;
+    color: #0f1411;
   }
 `;
 
@@ -63,6 +63,12 @@ export const StyledProfileForm = styled.form`
   display: flex;
   flex-direction: column;
 
+  p {
+    color: red;
+    font-size: var(--font-size-1);
+    font-weight: var(--font-weight-1);
+    font-family: var(--font-family-secondary);
+  }
 
   input {
     margin-top: 16px;
@@ -87,10 +93,8 @@ export const StyledProfileForm = styled.form`
     padding: 1rem;
 
     font-family: var(--font-family-secondary);
-
-    ::placeholder {
-      font-family: var(--font-family-secondary);
-    }
+    font-weight: var(--font-weight-1);
+    font-size: var(--font-size-1);
   }
 
   textarea {

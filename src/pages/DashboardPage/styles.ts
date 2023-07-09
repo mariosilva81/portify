@@ -51,7 +51,9 @@ export const StyledMain = styled.main`
     align-items: center;
     flex-direction: column;
 
-    padding: 4rem;
+    width: 100%;
+
+    padding: 3rem 0;
     gap: 1.5625rem;
 
     a {
@@ -76,6 +78,7 @@ export const StyledMain = styled.main`
 
     h2 {
       font-size: clamp(1rem, 4vw, 1.75rem);
+      padding: 0;
     }
 
     small {
@@ -84,6 +87,14 @@ export const StyledMain = styled.main`
       font-family: var(--font-family-secondary);
       font-weight: var(--font-weight-1);
       font-size: var(--font-size-1);
+    }
+
+    @media (min-width: 1440px) {
+      margin-top: 4rem;
+    }
+
+    @media (min-width: 2560px) {
+      margin-top: 20rem;
     }
   }
 `;

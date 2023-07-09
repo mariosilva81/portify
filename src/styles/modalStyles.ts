@@ -1,23 +1,61 @@
 import { styled } from "styled-components";
 
 export const StyledModal = styled.div`
-  z-index: 99;
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 
-  background-color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  padding:1rem 3rem;
+  inset: 0;
 
-  img{
-    opacity: 50%;
+  width: 100%;
+  padding: 2rem;
+
+  background: #11bcc750;
+
+  margin: 0 auto;
+
+  .modal-box {
+    position: relative;
+
+    width: 100%;
+    max-width: 500px;
+
+    padding: 2rem;
+    gap: 1.5rem;
+
+    display: flex;
+    flex-direction: column;
+
+    background: var(--color-white);
+
+    form {
+      p {
+        color: red;
+        font-family: var(--font-family-secondary);
+      }
+    }
+
+    button {
+      align-self: flex-end;
+
+      @media (max-width: 760px) {
+        width: 100%;
+      }
+    }
   }
 
-  .title-container{
-    display:flex;
-    flex-direction: row;
-    align-items: center;
+  .title-container {
+    img {
+      position: absolute;
+
+      cursor: pointer;
+
+      opacity: 50%;
+      width: 37px;
+      top: 10px;
+      right: 25px;
+    }
   }
 `;

@@ -48,6 +48,7 @@ export const ProfilePage = () => {
         </Header>
         <StyledMain>
           <NavBar />
+          
           <StyledContainerMain>
             <h1>Informações no perfil:</h1>
 

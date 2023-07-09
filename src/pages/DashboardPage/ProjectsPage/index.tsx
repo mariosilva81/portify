@@ -39,8 +39,10 @@ export const ProjectsPage = () => {
           </StyledButton>
         </NameButtonContainer>
       </Header>
+
       <ContentWrapper>
         <NavBar />
+
         <SectionStyled>
           <TittleAndButtonContainer>
             <h2>Meus Projetos</h2>
@@ -53,6 +55,7 @@ export const ProjectsPage = () => {
               Adicionar Projeto
             </StyledButton>
           </TittleAndButtonContainer>
+
           <ProjectList>
             {projectList?.length !== 0 ? (
               <ProjectCard />
@@ -66,6 +69,7 @@ export const ProjectsPage = () => {
           </ProjectList>
         </SectionStyled>
       </ContentWrapper>
+      
       {openAddModal && (
         <AddProjectModal
           setOpenAddModal={setOpenAddModal}
