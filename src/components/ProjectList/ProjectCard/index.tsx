@@ -2,7 +2,7 @@ import Edit from "../../../assets/icons/edit.png";
 import Delete from "../../../assets/icons/delete.png";
 import Git from "../../../assets/icons/github.png";
 import Link from "../../../assets/icons/link.png";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { ProjectsContext } from "../../../providers/ProjectsContext/ProjectsContext";
 import { ImagesContainer, StyledProjectCard } from "./styles";
 
@@ -42,6 +42,7 @@ export const ProjectCard = ({ setOpenEditModal }: EditProjectModalProps) => {
                   alt="Ícone de um lápis na cor verde que simboliza um botão para editar o projeto"
                   onClick={() => {
                     setSelectedProjectId(project.id);
+                    setOpenEditModal(true);
                   }}
                 />
                 <img

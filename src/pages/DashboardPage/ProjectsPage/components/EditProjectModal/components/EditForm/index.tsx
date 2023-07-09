@@ -12,7 +12,7 @@ interface EditFormProps {
 }
 
 export const EditForm: React.FC<EditFormProps> = ({ setOpenEditModal }) => {
-  const { editProject } = useContext(ProjectsContext);
+  const { editProject, selectedProjectId } = useContext(ProjectsContext);
 
   const {
     reset,
@@ -24,8 +24,8 @@ export const EditForm: React.FC<EditFormProps> = ({ setOpenEditModal }) => {
   });
 
   const submit: SubmitHandler<TEditForm> = (formData) => {
-    if (projectId !== null) {
-      editProject(formData, projectId)
+    if (selectedProjectId !== null) {
+      editProject(formData, selectedProjectId)
       setOpenEditModal(false);
       reset();
     }
@@ -46,10 +46,10 @@ export const EditForm: React.FC<EditFormProps> = ({ setOpenEditModal }) => {
       {errors.repository?.message && <p>{errors.repository.message}</p>}
 
       <label htmlFor="link">Link do deploy (opcional)</label>
-      <Input type="url" id="link" {...register("link")} />
+      <Input type="text" id="link" {...register("link")} />
 
       <label htmlFor="img">URL da imagem (opcional)</label>
-      <Input type="url" id="img" {...register("coverUrl")} />
+      <Input type="text" id="img" {...register("coverUrl")} />
 
       <StyledButton color="solid-green" widthsize="large1" type="submit">
         Criar Projeto

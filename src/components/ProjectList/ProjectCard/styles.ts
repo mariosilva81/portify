@@ -36,4 +36,8 @@ export const ImagesContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 1rem;
+
+  img{
+    cursor:pointer;
+  }
 `;

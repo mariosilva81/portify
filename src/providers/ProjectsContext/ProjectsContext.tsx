@@ -36,11 +36,11 @@ export const ProjectsProvider = ({ children }: IProjectsProviderProps) => {
     }
   };
 
-  const editProject = async (formData: TEditForm, idProject: number) => {
+  const editProject = async (formData: TEditForm, idProject: number | undefined) => {
     const token = localStorage.getItem("@TOKEN");
     try {
       setLoading(true);
-      const { data } = await api.put(`/projects/${idProject}`, formData, {
+      const { data } = await api.patch(`/projects/${idProject}`, formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const index = projectList.findIndex(
@@ -49,7 +49,7 @@ export const ProjectsProvider = ({ children }: IProjectsProviderProps) => {
       if (index !== -1) {
         const updateProjectList = [...projectList];
         updateProjectList[index] = data;
-        setProjectList(updateProjectList);
+        setProjectList(updateProjectList);  
       }
     } catch (error: AxiosError | any) {
       console.error(error.message);
@@ -88,9 +88,7 @@ export const ProjectsProvider = ({ children }: IProjectsProviderProps) => {
               },
             }
           );
-          setProjectList(data);
-          console.log(data);
-          
+          setProjectList(data);          
         } catch (error: AxiosError | any) {
           console.error(error);
         }
@@ -108,6 +106,7 @@ export const ProjectsProvider = ({ children }: IProjectsProviderProps) => {
         editProject,
         deleteProject,
         setSelectedProjectId,
+        selectedProjectId,
       }}
     >
       {children}
