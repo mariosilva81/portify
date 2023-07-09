@@ -6,10 +6,6 @@ import { useContext } from "react";
 import { ProjectsContext } from "../../../providers/ProjectsContext/ProjectsContext";
 import { ImagesContainer, StyledProjectCard } from "./styles";
 
-// interface EditProjectModalProps {
-//   setOpenEditModal: React.Dispatch<React.SetStateAction<boolean>>;
-// }
-
 export const ProjectCard = () => {
   const { setSelectedProject } = useContext(ProjectsContext);
 

@@ -14,7 +14,7 @@ import { ProjectList } from "../../components/ProjectList";
 import { ProjectCard } from "../../components/ProjectList/ProjectCard";
 import { PortfolioContext } from "../../providers/PortfolioContext/PortfolioContext";
 
-export const PortfolioPage = ({ setOpenEditModal }) => {
+export const PortfolioPage = () => {
   const { user }  = useContext(UserContext);
   const { portfolio } = useContext(PortfolioContext);
 
@@ -34,7 +34,7 @@ export const PortfolioPage = ({ setOpenEditModal }) => {
         <SectionStyled>
           <h1>Meus Projetos</h1>
           <ProjectList>
-            <ProjectCard setOpenEditModal={setOpenEditModal} />
+            <ProjectCard />
           </ProjectList>
         </SectionStyled>
       </ContentWrapper>
