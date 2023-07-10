@@ -34,8 +34,7 @@ export const StyledProjectCard = styled.li`
     gap: 1rem;
 
     h1 {
-      font-size: var(--font-size-5);
-      color: var(--color-black);
+      color: ${(props) => props.theme.colors.text};
     }
 
     p {
