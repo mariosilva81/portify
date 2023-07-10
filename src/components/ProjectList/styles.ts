@@ -4,8 +4,9 @@ export const StyledProjectList = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 2rem;
 
+  gap: 2rem;
+  
   .any-project {
     display: flex;
     justify-content: center;

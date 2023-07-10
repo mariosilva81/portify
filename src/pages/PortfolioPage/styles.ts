@@ -42,7 +42,7 @@ export const UserContainer = styled.div`
     font-size: var(--font-size-6);
     width: fit-content;
   }
-
+  
   p {
     line-height: 28px;
     font-size: var(--font-size-3);
@@ -82,6 +82,16 @@ export const SectionStyled = styled.section`
   margin-bottom: 2rem;
 
   > h1 {
-    font-size: 36px;
+    font-size: clamp(2rem, 4vw, 2.25rem);
+    margin-bottom: 1rem;
+
+    @media (max-width: 798px) {
+      align-self: center;
+    }
+  }
+
+  ul {
+    gap: 4rem;
+    margin-bottom: 3rem;
   }
 `;

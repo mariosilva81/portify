@@ -30,7 +30,7 @@ export const EditProjectModal = () => {
 
   return (
     <StyledModal role="dialog">
-      <div ref={modalRef}>
+      <div ref={modalRef} className="modal-box">
         <div className="title-container">
           <h1>Editar Projeto</h1>
           <img src={CloseButtonBlack} onClick={() => setOpenEditModal(false)} />
