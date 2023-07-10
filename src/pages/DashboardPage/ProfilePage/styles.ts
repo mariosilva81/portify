@@ -64,7 +64,7 @@ export const StyledProfileForm = styled.form`
   flex-direction: column;
   gap: 1rem;
 
-  p {
+  .text-error {
     color: red;
 
     font-size: var(--font-size-1);

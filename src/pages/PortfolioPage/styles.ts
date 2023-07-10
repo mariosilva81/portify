@@ -46,7 +46,7 @@ export const UserContainer = styled.div`
   color: ${(props) => props.theme.colors.text};
 
   h2 {
-    font-size: var(--font-size-6);
+    font-size: clamp(1.6rem, 4vw, 2rem);
 
     width: fit-content;
   }
@@ -57,6 +57,11 @@ export const UserContainer = styled.div`
 
     width: 100%;
     max-width: 75rem;
+  }
+
+  @media (max-width: 696px) {
+    flex-wrap: wrap;
+    justify-content: center;
   }
 `;
 
@@ -72,6 +77,10 @@ export const UserInfoContainer = styled.div`
     color: var(--color-primary);
 
     width: fit-content;
+
+    @media (max-width: 696px) {
+      align-self: center;
+    }
   }
 
   @media (min-width: 50rem) {
@@ -86,13 +95,14 @@ export const SectionStyled = styled.section`
 
   padding-left: 15%;
   padding-right: 15%;
-  margin-top: 5rem;
-  margin-bottom: 2rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 
   > h1 {
-    font-size: clamp(2rem, 4vw, 2.25rem);
+    margin-top: 1rem;
     margin-bottom: 1rem;
-
+    font-size: clamp(1.6rem, 4vw, 2.25rem);
+  
     @media (max-width: 49.875rem) {
       align-self: center;
     }
@@ -100,7 +110,6 @@ export const SectionStyled = styled.section`
 
   ul {
     gap: 4rem;
-    
     margin-bottom: 3rem;
   }
 `;
