@@ -1,4 +1,5 @@
-import { TProfileForm } from "../../pages/DashboardPage/ProfilePage/components/ProfileForm/schema";
+import { TCreateProfileForm } from "../../pages/DashboardPage/ProfilePage/components/CreateProfileForm/schema";
+import { TEditProfileForm } from "../../pages/DashboardPage/ProfilePage/components/EditProfileForm/schema";
 
 export interface IPortfolioProviderProps {
   children: React.ReactNode;
@@ -13,7 +14,9 @@ export interface IPortfolio {
 
 export interface IPortfolioContext {
   portfolio: IPortfolio | null;
+  isPortfolioId: number | null;
   setPortfolio: React.Dispatch<React.SetStateAction<IPortfolio | null>>;
-  createPortfolio: (formData: TProfileForm, userId: number) => Promise<void>;
-  editPortfolio: (formData: TProfileForm) => Promise<void>;
+  createPortfolio: (formData: TCreateProfileForm, userId: number) => Promise<void>;
+  editPortfolio: (formData: TEditProfileForm) => Promise<void>;
+  verifyPortfolio: () => Promise<boolean>;
 }

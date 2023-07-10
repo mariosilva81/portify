@@ -1,40 +1,44 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 
-export const FooterStyled = styled.footer`
+export const StyledFooter = styled.footer`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
+  gap: 2rem;
 
   width: 100%;
-  height: 8rem;
 
-  max-width:3000px;
+  padding-left: 15%;
+  padding-right: 15%;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 
+  background-color: var(--color-light-gray);
+  
   img {
     width: 5rem;
     height: 1.5rem;
 
-    color:var(--color-black);
+    color: var(--color-black);
   }
 
-  p{
+  p {
     font-size: 1rem;
     font-family: var(--font-family-secondary);
 
     text-align: center;
-    max-width: 250px;
 
-    color:var(--color-black);
+    max-width: 25rem;
+
+    color: var(--color-black);
   }
 
-  @media(min-width: 620px) {
-    padding:var(--padding-default);
-
-    justify-content:space-between;
+  @media (max-width: 43.5rem) {
+    justify-content: center;
 
     p {
-      max-width: 400px;
+      max-width: 25rem;
     }
   }
 `;

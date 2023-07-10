@@ -17,7 +17,8 @@ export const registerFormSchema = z.object({
         .regex(/[0-9]/, "A senha deve conter pelo menos um número.")
         .regex(/[^a-zA-Z0-9]/, "A senha deve conter pelo menos um caractere especial."),
     confirmPassword: z.string()
-        .nonempty("A confirmação da senha é obrigatória."),
+        .nonempty("A confirmação da senha é obrigatória.")
+        .optional(),
 })
 .refine(({password, confirmPassword}) => password === confirmPassword, {
     message: "As senhas não correspondem.",
