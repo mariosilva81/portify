@@ -50,7 +50,7 @@ export const DashboardPage = () => {
               <h2>Seu portfólio está online</h2>
               <small>Acesse em</small>
               <a href="/portfolio" target="_blank">
-                www.portify.com.br/portfolio
+              https://m3-g5-portify.vercel.app/portfolio
               </a>
             </section>
           ) : (
