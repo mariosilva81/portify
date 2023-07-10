@@ -2,6 +2,7 @@ import { RegisterForm } from "./components/RegisterForm";
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { Button } from "../../components/Button";
+import ArrowBack from "../../assets/icons/arrow-back.png"
 import { Link } from "react-router-dom";
 import {
   StyledContainerMain,
@@ -35,7 +36,7 @@ export const RegisterPage = () => {
           <StyledContainerHeading>
             <StyledLink to="/">
               <img
-                src="src\assets\icons\arrow-back.png"
+                src={ArrowBack}
                 alt="Ícone de uma seta para esquerda"
               />
               voltar
