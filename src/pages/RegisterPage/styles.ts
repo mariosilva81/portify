@@ -58,7 +58,7 @@ export const StyledContainerHeading = styled.div`
     font-weight: var(--font-weight-1);
     font-size: var(--font-size-2);
 
-    color: #00000080;
+    color: var(--color-black-text);
   }
 `;
 

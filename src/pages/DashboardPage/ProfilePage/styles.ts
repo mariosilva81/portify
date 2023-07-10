@@ -74,6 +74,7 @@ export const StyledProfileForm = styled.form`
 
   input {
     margin-top: 1rem;
+    color: var(--color-black-text);
   }
 
   label {
@@ -94,6 +95,8 @@ export const StyledProfileForm = styled.form`
     border-radius: 0.5rem;
 
     padding: 1rem;
+
+    color: var(--color-black-text);
 
     font-family: var(--font-family-secondary);
     font-weight: var(--font-weight-1);

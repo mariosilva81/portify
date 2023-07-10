@@ -75,7 +75,7 @@ export const UserInfoContainer = styled.div`
   }
 
   @media (min-width: 50rem) {
-    width: 100vw;
+    width: 40vw;
   }
 `;
 

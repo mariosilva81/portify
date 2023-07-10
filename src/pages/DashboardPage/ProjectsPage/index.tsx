@@ -60,7 +60,7 @@ export const ProjectsPage = () => {
             ) : (
               <div className="any-project">
                 <h3>
-                  Nenhum projeto cadastrado.
+                  Nenhum projeto cadastrado
                 </h3>
               </div>
             )}

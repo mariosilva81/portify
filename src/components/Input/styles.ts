@@ -14,4 +14,6 @@ export const InputStyled = styled.input`
   font-family: var(--font-family-secondary);
   font-weight: var(--font-weight-1);
   font-size: var(--font-size-1);
+
+  color: var(--color-black-text);
 `;

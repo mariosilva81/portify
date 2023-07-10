@@ -56,7 +56,7 @@ export const StyledContainerHeading = styled.div`
     font-weight: var(--font-weight-1);
     font-size: clamp(0.75rem, 4vw, 1rem);
     
-    color: #00000080;
+    color: var(--color-black-text);
 
     margin-top: 0.75rem;
   }
