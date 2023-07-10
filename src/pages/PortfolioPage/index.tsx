@@ -27,7 +27,7 @@ export const PortfolioPage = () => {
         <UserContainer>
           <UserInfoContainer>
             <h2>{user?.name}</h2>
-            <p>{portfolio?.position}</p>
+            <span>{portfolio?.position}</span>
           </UserInfoContainer>
           <p>{portfolio?.description}</p>
         </UserContainer>

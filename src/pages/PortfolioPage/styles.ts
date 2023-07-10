@@ -32,23 +32,23 @@ export const ContentWrapper = styled.div`
 
 export const UserContainer = styled.div`
   display: flex;
-  flex-direction: column;
   gap: 1rem;
   margin-top: 1rem;
   padding-left: 15%;
   padding-right: 15%;
   color: ${(props) => props.theme.colors.text};
 
-  p {
-    color: var(--color-black);
-
-    font-size: var(--font-size-3);
-
-    line-height: 28px;
+  h2 {
+    font-size: var(--font-size-6);
+    width: fit-content;
   }
 
-  @media (min-width: 800px) {
-    flex-direction: row;
+  p {
+    line-height: 28px;
+    font-size: var(--font-size-3);
+
+    width: 100%;
+    max-width: 1200px;
   }
 `;
 
@@ -57,15 +57,12 @@ export const UserInfoContainer = styled.div`
   flex-direction: column;
   gap: 1.5rem;
 
-  h2 {
-    font-size: 40px;
-  }
-
-  p {
-    font-size: var(--font-size-3);
+  span {
     font-weight: 700;
-
+    font-size: var(--font-size-3);
     color: var(--color-primary);
+
+    width: fit-content;
   }
 
   @media (min-width: 800px) {
@@ -86,6 +83,5 @@ export const SectionStyled = styled.section`
 
   > h1 {
     font-size: 36px;
-    
   }
 `;

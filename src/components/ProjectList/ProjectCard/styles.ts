@@ -32,7 +32,7 @@ export const StyledProjectCard = styled.li`
     max-width: 300px;
 
     h1 {
-      color: var(--color-black);
+      color: ${(props) => props.theme.colors.text};
     }
   }
 
