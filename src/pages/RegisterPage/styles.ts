@@ -5,7 +5,7 @@ export const StyledContainerHeader = styled.div`
   display: flex;
   align-items: center;
 
-  @media (max-width: 675px) {
+  @media (max-width: 42.1875rem) {
     .hidden {
       display: none;
     }
@@ -31,6 +31,11 @@ export const StyledContainerMain = styled.div`
 
   @media (max-width: 34.375rem) {
     padding: 2rem 3rem;
+  }
+
+  @media (min-width: 64rem) {
+    margin-top: 5.7%;
+    margin-bottom: 5.7%;
   }
 `;
 

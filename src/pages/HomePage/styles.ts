@@ -18,6 +18,11 @@ export const StyledContainerMain = styled.div`
 
     padding: 2rem;
   }
+
+  @media (min-width: 64rem) {
+    margin-top: 1.45%;
+    margin-bottom: 1.45%;
+  }
 `;
 
 export const StyledContainerImage = styled.div`

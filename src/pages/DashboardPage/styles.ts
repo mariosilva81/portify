@@ -38,7 +38,7 @@ export const StyledMain = styled.main`
   }
 
   p {
-    color: var(--color-light-gray);
+    color: gray;
 
     font-family: var(--font-family-secondary);
     font-weight: var(--font-weight-1);
@@ -83,7 +83,7 @@ export const StyledMain = styled.main`
     }
 
     small {
-      color: var(--color-light-gray);
+      color: gray;
 
       font-family: var(--font-family-secondary);
       font-weight: var(--font-weight-1);
