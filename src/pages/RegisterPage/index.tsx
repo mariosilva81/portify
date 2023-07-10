@@ -22,7 +22,6 @@ export const RegisterPage = () => {
               color="solid-black"
             />
           </Link>
-
           <Link to="/login">
             <Button
               widthsize="large1"
@@ -31,7 +30,6 @@ export const RegisterPage = () => {
             />
           </Link>
       </Header>
-
       <main>
         <StyledContainerMain>
           <StyledContainerHeading>
@@ -42,17 +40,14 @@ export const RegisterPage = () => {
               />
               voltar
             </StyledLink>
-            
             <h1>Cadastre-se</h1>
             <p>Preencha os campos abaixo para criar uma conta</p>
           </StyledContainerHeading>
-
           <StyledContainerForm>
             <RegisterForm />
           </StyledContainerForm>
         </StyledContainerMain>
       </main>
-
       <Footer />
     </>
   );

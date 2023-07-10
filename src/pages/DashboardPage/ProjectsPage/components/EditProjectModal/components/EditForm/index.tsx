@@ -49,7 +49,6 @@ export const EditForm: React.FC<EditFormProps> = () => {
     <StyledEditForm onSubmit={handleSubmit(submit)}>
       <Input type="text" id="name" {...register("name")} placeholder="Nome" />
       {errors.name?.message && <p>{errors.name.message}</p>}
-
       <Input
         type="text"
         id="description"
@@ -57,7 +56,6 @@ export const EditForm: React.FC<EditFormProps> = () => {
         placeholder="Descrição resumida"
       />
       {errors.description?.message && <p>{errors.description.message}</p>}
-
       <Input
         type="text"
         id="repository"
@@ -65,21 +63,18 @@ export const EditForm: React.FC<EditFormProps> = () => {
         placeholder="Repositório"
       />
       {errors.repository?.message && <p>{errors.repository.message}</p>}
-
       <Input
         type="text"
         id="link"
         {...register("link")}
         placeholder="Link do deploy (opcional)"
       />
-
       <Input
         type="text"
         id="coverUrl"
         {...register("coverUrl")}
         placeholder="URL da imagem (opcional)"
       />
-
       <StyledButton color="solid-green" widthsize="large1" type="submit">
         Editar Projeto
       </StyledButton>

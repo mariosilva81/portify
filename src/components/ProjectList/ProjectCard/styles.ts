@@ -5,8 +5,9 @@ export const StyledProjectCard = styled.li`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 100%;
   gap: 2rem;
+
+  width: 100%;
 
   .img-container {
     display: flex;
@@ -14,17 +15,18 @@ export const StyledProjectCard = styled.li`
     flex-wrap: wrap;
     gap: 1.5rem;
 
-    @media (max-width: 799px) {
+    @media (max-width: 49.9375rem) {
       justify-content: center;
       align-items: center;
     }
   }
 
   .img-project {
-    border: 1px solid var(--color-black);
+    border: .0625rem solid var(--color-black);
     border-radius: 1.25rem;
-    width: 250px;
-    height: 150px;
+
+    width: 15.625rem;
+    height: 9.375rem;
   }
 
   .title-container {
@@ -34,21 +36,21 @@ export const StyledProjectCard = styled.li`
     gap: 1rem;
 
     h1 {
-      color: ${(props) => props.theme.colors.text};
+      color: var(--color-black);
     }
 
     p {
       width: 100%;
-      max-width: 300px;
+      max-width: 18.75rem;
       align-self: center;
     }
 
-    @media (max-width: 799px) {
+    @media (max-width: 49.9375rem) {
       align-items: center;
     }
   }
 
-  @media (min-width: 800px) {
+  @media (min-width: 50rem) {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;

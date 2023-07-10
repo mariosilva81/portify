@@ -23,6 +23,7 @@ export const ProjectsPage = () => {
   const { user, userLogout } = useContext(UserContext);
   const { projectList, openEditModal } = useContext(ProjectsContext);
   const { isPortfolioId } = useContext(PortfolioContext);
+
   const [openAddModal, setOpenAddModal] = useState(false);
 
   return (
@@ -39,10 +40,8 @@ export const ProjectsPage = () => {
           </StyledButton>
         </NameButtonContainer>
       </Header>
-
       <ContentWrapper>
         <NavBar />
-
         <SectionStyled>
           <TittleAndButtonContainer>
             <h2>Meus Projetos</h2>
@@ -55,7 +54,6 @@ export const ProjectsPage = () => {
               Adicionar Projeto
             </StyledButton>
           </TittleAndButtonContainer>
-
           <ProjectList>
             {projectList?.length !== 0 ? (
               <ProjectCard />
@@ -69,7 +67,6 @@ export const ProjectsPage = () => {
           </ProjectList>
         </SectionStyled>
       </ContentWrapper>
-      
       {openAddModal && (
         <AddProjectModal
           setOpenAddModal={setOpenAddModal}

@@ -21,7 +21,7 @@ export const PortfolioPage = () => {
   return (
     <PageWrapper>
       <StyledHeader>
-        <img src={Logo} alt="Logotipo da página na cor verde" />
+        <img src={Logo} alt="Logotipo da Portify na cor verde" />
       </StyledHeader>
       <ContentWrapper>
         <UserContainer>

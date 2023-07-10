@@ -6,6 +6,7 @@ export const InputStyled = styled.input`
 
   border: 1px solid var(--color-primary);
   border-radius: 0.5rem;
+  
   padding: 1rem;
 
   outline: none;

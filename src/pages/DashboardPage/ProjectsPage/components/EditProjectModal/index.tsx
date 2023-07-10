@@ -2,8 +2,8 @@ import { RefObject, useContext, useEffect } from "react";
 import { useOutsideClick } from "../../../../../hooks/useOutsideClick";
 import CloseButtonBlack from "../../../../../assets/icons/close-black.png";
 import { StyledModal } from "../../../../../styles/modalStyles";
-import { EditForm } from './components/EditForm';
-import { ProjectsContext } from '../../../../../providers/ProjectsContext/ProjectsContext';
+import { EditForm } from "./components/EditForm";
+import { ProjectsContext } from "../../../../../providers/ProjectsContext/ProjectsContext";
 
 export const EditProjectModal = () => {
   const { setOpenEditModal } = useContext(ProjectsContext);

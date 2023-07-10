@@ -9,8 +9,7 @@ import { StyledProfileForm } from "../../styles";
 import { useContext, useEffect } from "react";
 
 export const EditProfileForm = () => {
-  const { portfolio, editPortfolio } =
-    useContext(PortfolioContext);
+  const { portfolio, editPortfolio } = useContext(PortfolioContext);
 
   const {
     reset,

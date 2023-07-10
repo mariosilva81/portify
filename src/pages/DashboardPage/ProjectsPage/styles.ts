@@ -20,6 +20,7 @@ export const NameButtonContainer = styled.div`
 
   h3 {
     color: var(--color-white);
+
     font-family: var(--font-family-secondary);
     font-size: var(--font-size-2);
     font-weight: var(--font-weight-1);
@@ -30,19 +31,19 @@ export const ContentWrapper = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  margin-top: 1rem;
+  gap: 2rem;
 
+  margin-top: 1rem;
   margin-left: 15%;
   margin-right: 15%;
   
-  gap: 2rem;
 `;
 
 export const SectionStyled = styled.section`
   display: flex;
   flex-direction: column;
-
   gap: 3rem;
+
   padding-bottom: 2rem;
 
   ul {
@@ -59,6 +60,7 @@ export const TittleAndButtonContainer = styled.div`
 
   h2 {
     font-size: clamp(1.75rem, 4vw, 2.5rem);
+
     margin-bottom: 1rem;
   }
 
@@ -67,10 +69,10 @@ export const TittleAndButtonContainer = styled.div`
   }
 
   img {
-    width: 30px;
+    width: 1.875rem;
   }
 
-  @media (min-width: 800px) {
+  @media (min-width: 50rem) {
     flex-direction: row;
   }
 `;

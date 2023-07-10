@@ -4,11 +4,13 @@ export const StyledHeader = styled.header`
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 0.625rem;
+
   width: 100%;
+  height: 4.375rem;
+
   padding-left: 15%;
   padding-right: 15%;
-  height: 4.375rem;
-  gap: 0.625rem;
 
   background: ${(props) => props.theme.colors.background};
 
@@ -21,34 +23,40 @@ export const StyledHeader = styled.header`
 export const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
+
   min-height: 100vh;
 `;
 
 export const ContentWrapper = styled.div`
   flex: 1;
+
   background: ${(props) => props.theme.colors.background};
+
   color: ${(props) => props.theme.colors.text};
 `;
 
 export const UserContainer = styled.div`
   display: flex;
   gap: 1rem;
+
   margin-top: 1rem;
   padding-left: 15%;
   padding-right: 15%;
+  
   color: ${(props) => props.theme.colors.text};
 
   h2 {
     font-size: var(--font-size-6);
+
     width: fit-content;
   }
   
   p {
-    line-height: 28px;
+    line-height: 1.75rem;
     font-size: var(--font-size-3);
 
     width: 100%;
-    max-width: 1200px;
+    max-width: 75rem;
   }
 `;
 
@@ -58,14 +66,15 @@ export const UserInfoContainer = styled.div`
   gap: 1.5rem;
 
   span {
-    font-weight: 700;
+    font-weight: var(--font-weight-2);
     font-size: var(--font-size-3);
+
     color: var(--color-primary);
 
     width: fit-content;
   }
 
-  @media (min-width: 800px) {
+  @media (min-width: 50rem) {
     width: 100vw;
   }
 `;
@@ -77,7 +86,6 @@ export const SectionStyled = styled.section`
 
   padding-left: 15%;
   padding-right: 15%;
-
   margin-top: 5rem;
   margin-bottom: 2rem;
 
@@ -85,13 +93,14 @@ export const SectionStyled = styled.section`
     font-size: clamp(2rem, 4vw, 2.25rem);
     margin-bottom: 1rem;
 
-    @media (max-width: 798px) {
+    @media (max-width: 49.875rem) {
       align-self: center;
     }
   }
 
   ul {
     gap: 4rem;
+    
     margin-bottom: 3rem;
   }
 `;
