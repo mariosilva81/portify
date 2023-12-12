@@ -8,12 +8,8 @@ import { PortfolioPage } from "../pages/PortfolioPage";
 import { PublicsRoutes } from "./PublicsRoutes";
 import { PrivatesRoutes } from "./PrivatesRoutes";
 import { DashboardPage } from '../pages/DashboardPage';
-import { useContext } from 'react';
-import { UserContext } from '../providers/UserContext/UserContext';
 
 export const RoutesMain = () => {
-	const { user } = useContext(UserContext);
-
 	return (
 		<Routes>
 			<Route element={<PublicsRoutes />}>
