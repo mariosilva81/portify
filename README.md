@@ -1,6 +1,7 @@
 # Portify
 
-Bem-vindo ao projeto Portify desenvolvido em React! Esta aplicação foi desenvolvida para permitir que os usuários cadastrem e gerenciem seus portfólios e projetos de forma eficiente. Com funcionalidades de cadastro, edição, exclusão e visualização, a aplicação oferece uma experiência completa para organizar informações importantes sobre trabalhos realizados.
+Bem-vindo(a) ao projeto Portify desenvolvido em React! 
+Esta aplicação foi desenvolvida por mim e pelos meus colegas de turma no curso de desenvolvimento web fullstack na Kenzie Academy Brasil, para permitir que os usuários cadastrem e gerenciem seus portfólios e projetos de forma eficiente. Com funcionalidades de cadastro, edição, exclusão e visualização, a aplicação oferece uma experiência completa para organizar informações importantes sobre trabalhos realizados.
 
 ## Funcionalidades
 
