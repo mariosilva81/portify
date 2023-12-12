@@ -76,7 +76,9 @@ export const PortfolioProvider = ({ children }: IPortfolioProviderProps) => {
   };
 
   const verifyPortfolio = async (): Promise<boolean> => {
-    const userId = JSON.parse(localStorage.getItem("@USERID")!);
+    const currentUrl = window.location.href;
+    const idMatch = currentUrl.match(/\/(\d+)\/?$/);
+    const userId = idMatch ? parseInt(idMatch[1], 10) : null;
 
     if (userId) {
       try {
@@ -93,8 +95,24 @@ export const PortfolioProvider = ({ children }: IPortfolioProviderProps) => {
         console.error(error.message);
         return false;
       }
+    } else {
+      const userIdFromLocalStorage = JSON.parse(localStorage.getItem("@USERID")!);
+
+      try {
+        const { data } = await api.get(`/portfolios?userId=${userIdFromLocalStorage}`);
+
+        if (data.length !== 0) {
+          setIsPortfolioId(data[0].id);
+          setPortfolio(data[0]);
+          return true;
+        } else {
+          return false;
+        }
+      } catch (error: AxiosError | any) {
+        console.error(error.message);
+        return false;
+      }
     }
-    return false;
   };
 
   useEffect(() => {
