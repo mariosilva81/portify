@@ -67,8 +67,9 @@ export const EditForm: React.FC<EditFormProps> = () => {
         type="text"
         id="link"
         {...register("link")}
-        placeholder="Link do deploy (opcional)"
+        placeholder="Link do deploy"
       />
+      {errors.link?.message && <p>{errors.link.message}</p>}
       <Input
         type="text"
         id="coverUrl"
