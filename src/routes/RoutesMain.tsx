@@ -26,7 +26,7 @@ export const RoutesMain = () => {
 				<Route path="/dashboard/profile" element={<ProfilePage />} />
 				<Route path="/dashboard/projects" element={<ProjectsPage />} />
 			</Route>
-			<Route path={`/portfolio/${user?.id}`} element={<PortfolioPage />} />
+			<Route path="/portfolio/:userId" element={<PortfolioPage />} />
 		</Routes>
 	);
 };
